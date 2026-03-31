@@ -221,16 +221,17 @@
         .sol-concept h3 { font-size: 1.45rem; font-weight: 900; color: var(--navy); margin-bottom: 16px; line-height: 1.5; }
         .sol-concept h3 span { color: var(--gold); }
         .sol-concept p { font-size: .95rem; color: var(--text-sub); margin-bottom: 32px; line-height: 2; }
-        .sol-flow { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+        .sol-flow { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: nowrap; }
         .flow-circle {
             width: 90px; height: 90px; border-radius: 50%;
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
             font-weight: 700; font-size: .82rem; text-align: center; line-height: 1.4;
+            flex-shrink: 0;
         }
         .flow-circle.outline { border: 2px solid var(--border); color: var(--text-sub); background: #fff; }
         .flow-circle.gold { background: var(--gold-grad); color: #fff; }
-        .flow-arr { font-size: 1.5rem; color: var(--gold); padding: 0 14px; margin-top: -8px; }
+        .flow-arr { font-size: 1.5rem; color: var(--gold); padding: 0 10px; margin-top: -8px; flex-shrink: 0; }
         .sol-points {
             display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 20px;
         }
@@ -441,7 +442,7 @@
         .cpf-item strong { font-size: .88rem; color: #fff; display: block; margin-bottom: 2px; }
         .cpf-item small { font-size: .75rem; color: rgba(255,255,255,.5); }
 
-        /* 個別面談プランラベル */
+        /* プレミアムプランラベル */
         .zoom-plan-label {
             text-align: center; margin-bottom: 20px;
         }
@@ -452,10 +453,23 @@
             padding: 6px 24px; border-radius: 50px; letter-spacing: .04em;
         }
 
-        /* 個別面談3カラム */
+        /* プレミアムプラン3カラム */
         .zoom-plan-grid {
             display: grid; grid-template-columns: repeat(3,1fr);
             gap: 20px; margin-bottom: 20px; align-items: start;
+        }
+        @media (max-width: 900px) {
+            .zoom-plan-grid {
+                display: flex; flex-wrap: nowrap;
+                overflow-x: auto; gap: 16px;
+                padding-bottom: 16px;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+            }
+            .zoom-plan-grid .plan-card {
+                min-width: 80vw; scroll-snap-align: start; flex-shrink: 0;
+            }
+            .plan-card--popular { transform: none; }
         }
         .plan-card {
             background: #fff; border-radius: var(--r-lg);
@@ -502,8 +516,6 @@
         @media (max-width: 900px) {
             .community-plan { grid-template-columns: 1fr; }
             .community-plan__right { border-left: none; border-top: 1px solid rgba(255,255,255,.1); }
-            .zoom-plan-grid { grid-template-columns: 1fr; }
-            .plan-card--popular { transform: none; }
             .tanpatsu-plan__price { margin-left: 0; }
         }
 
@@ -974,9 +986,9 @@
             </div>
         </div>
 
-        <!-- 個別面談プラン -->
+        <!-- プレミアムプラン -->
         <div class="zoom-plan-label fade">
-            <span>個別Zoomサポート付きプラン</span>
+            <span>プレミアムプラン（Zoomサポート付き）｜面談1回60分</span>
         </div>
         <div class="zoom-plan-grid fade">
             <div class="plan-card">
