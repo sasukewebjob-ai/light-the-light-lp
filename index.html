@@ -599,6 +599,41 @@
         .final-cta-note { margin-top: 18px; font-size: .78rem; color: rgba(255,255,255,.55); }
 
         /* ════════════════════════
+           FAQ
+        ════════════════════════ */
+        .faq { background: var(--off-white); }
+        .faq-hd { text-align: center; margin-bottom: 48px; }
+        .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            box-shadow: var(--sh-sm);
+        }
+        .faq-q {
+            display: flex; align-items: flex-start; gap: 16px;
+            padding: 22px 28px;
+            font-weight: 700; font-size: 1rem; color: var(--navy);
+            cursor: pointer;
+        }
+        .faq-a {
+            display: flex; align-items: flex-start; gap: 16px;
+            padding: 0 28px 22px;
+            font-size: .93rem; color: var(--text-sub); line-height: 1.9;
+        }
+        .faq-mark {
+            flex-shrink: 0;
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 32px; height: 32px; border-radius: 50%;
+            font-weight: 900; font-size: .9rem;
+            background: var(--gold-grad); color: var(--white);
+        }
+        .faq-mark.a {
+            background: linear-gradient(135deg, #16A34A 0%, #22C55E 100%);
+        }
+
+        /* ════════════════════════
            FOOTER
         ════════════════════════ */
         footer { background: var(--navy); color: rgba(255,255,255,.4); text-align: center; padding: 32px 24px; font-size: .78rem; }
@@ -1115,6 +1150,46 @@
                     <div class="sig-name">根津 仁志（サスケ）</div>
                     <div class="sig-role">ライトザライト 代表 / AIコンサル・講師・Webディレクター</div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec faq" id="faq">
+    <div class="container">
+        <div class="faq-hd fade">
+            <span class="label">FAQ</span>
+            <h2 class="sec-title">ライトザライトに関する<br>よくある質問</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item fade">
+                <div class="faq-q"><span class="faq-mark">Q</span>AI初心者でも参加できますか？</div>
+                <div class="faq-a"><span class="faq-mark a">A</span><div>はい、問題ありません。<br>過去のアーカイブでAIの基礎から学べるため、知識ゼロの状態からでも参加できます。また、面談付きプランでは個別サポートも受けられるため、初心者の方でも安心して進められます。</div></div>
+            </div>
+            <div class="faq-item fade">
+                <div class="faq-q"><span class="faq-mark">Q</span>会社員でも参加できますか？</div>
+                <div class="faq-a"><span class="faq-mark a">A</span><div>はい、会社員の方も参加可能です。<br>副業としてAIを活用したい方や、将来的に独立を考えている方にも向いています。今すぐ独立していなくても問題ありません。</div></div>
+            </div>
+            <div class="faq-item fade">
+                <div class="faq-q"><span class="faq-mark">Q</span>どのくらいのレベルの人が参加していますか？</div>
+                <div class="faq-a"><span class="faq-mark a">A</span><div>初心者から実務経験者まで幅広く参加しています。<br>現在は20代〜60代まで、Webライター、Webディレクター、CS、整体師などさまざまな職種の方が在籍しています。自分のレベルに合わせて学びやすい環境です。</div></div>
+            </div>
+            <div class="faq-item fade">
+                <div class="faq-q"><span class="faq-mark">Q</span>他のAIスクールやコミュニティとの違いは何ですか？</div>
+                <div class="faq-a"><span class="faq-mark a">A</span><div>ライトザライトは、単なる学びの場ではなく「事業者チーム」として活動していく点が大きな違いです。<br>学ぶだけでなく、実践し、仕事の受発注や営業にもつなげていくことを目指しています。AI活用を収益化まで見据えているのが特徴です。</div></div>
+            </div>
+            <div class="faq-item fade">
+                <div class="faq-q"><span class="faq-mark">Q</span>本当に成果は出ますか？</div>
+                <div class="faq-a"><span class="faq-mark a">A</span><div>成果には個人差がありますが、作業時間の短縮や実務力の向上を実感している方は多くいます。<br>実際に、記事作成が10時間から3時間に短縮した方や、資料作成時間が1/10になった方もいます。学ぶだけで終わらず、実践できる環境があることが強みです。</div></div>
+            </div>
+            <div class="faq-item fade">
+                <div class="faq-q"><span class="faq-mark">Q</span>忙しくてリアルタイムで参加できなくても大丈夫ですか？</div>
+                <div class="faq-a"><span class="faq-mark a">A</span><div>はい、大丈夫です。<br>過去の勉強会や講座はアーカイブで視聴できるため、自分のペースで学べます。忙しい方でも継続しやすい環境を整えています。</div></div>
+            </div>
+            <div class="faq-item fade">
+                <div class="faq-q"><span class="faq-mark">Q</span>どんな人に向いていますか？</div>
+                <div class="faq-a"><span class="faq-mark a">A</span><div>AIを実務や収益につなげたい方、一人では継続が難しい方、学ぶだけでなく仕事にもつなげたい方に向いています。<br>また、個人で頑張るだけでなく、チームとして価値提供していく働き方に興味がある方にもおすすめです。</div></div>
             </div>
         </div>
     </div>
