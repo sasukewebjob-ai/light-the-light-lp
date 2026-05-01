@@ -5,32 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ライトザライト | AI活用×個人事業主コミュニティ</title>
     <meta name="description" content="AI活用を軸に「実務」「収益化」「事業運営」まで一気通貫でサポートする事業者チーム。学ぶ→実践する→稼ぐを、チームで完結。">
-    <link rel="canonical" href="https://sasukewebjob-ai.github.io/light-the-light-lp/">
-
-    <!-- OGP / Twitter Card -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sasukewebjob-ai.github.io/light-the-light-lp/">
-    <meta property="og:title" content="ライトザライト | AI活用×個人事業主コミュニティ">
-    <meta property="og:description" content="AIは学んだ。でも、仕事には繋がっていない――そんな方のための「事業者チーム」。学ぶ→実践→稼ぐをチームで完結。">
-    <meta property="og:image" content="https://sasukewebjob-ai.github.io/light-the-light-lp/seminar1.png">
-    <meta property="og:locale" content="ja_JP">
-    <meta property="og:site_name" content="ライトザライト">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ライトザライト | AI活用×個人事業主コミュニティ">
-    <meta name="twitter:description" content="AIは学んだ。でも、仕事には繋がっていない――そんな方のための「事業者チーム」。">
-    <meta name="twitter:image" content="https://sasukewebjob-ai.github.io/light-the-light-lp/seminar1.png">
-
-    <!-- Google Analytics 4 (TODO: GA4 測定IDを取得して GA_MEASUREMENT_ID を置き換え。GTMやMicrosoft Clarityも別途検討) -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
-    </script>
-    -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -347,16 +321,9 @@
             display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
             margin-bottom: 16px;
         }
-        .hero-cta-microcopy {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 12px;
-            line-height: 1.5;
-        }
         .hero-cta-note {
             font-size: 12px; color: var(--text-faint);
             letter-spacing: .04em;
-            margin-top: 6px;
         }
         .hero-stats {
             display: grid;
@@ -774,66 +741,6 @@
         @media (max-width: 600px) { .act-grid { grid-template-columns: 1fr; } }
 
         /* ════════════════════════════════════════
-           USE CASES
-        ════════════════════════════════════════ */
-        .usecases { background: var(--bg-canvas); }
-        .usecase-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-top: 8px;
-        }
-        .usecase-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--r-md);
-            padding: 28px 22px;
-            transition: all .25s ease;
-        }
-        .usecase-card:hover {
-            border-color: var(--border-default);
-            box-shadow: var(--sh-soft);
-            transform: translateY(-2px);
-        }
-        .usecase-icon { font-size: 28px; margin-bottom: 12px; }
-        .usecase-role {
-            font-size: 11px;
-            color: var(--text-muted);
-            letter-spacing: .08em;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        .usecase-result {
-            font-family: var(--f-serif);
-            font-size: 16px;
-            color: var(--text-primary);
-            line-height: 1.5;
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-        .usecase-result strong {
-            color: var(--gold-deep);
-            font-weight: 700;
-        }
-        .usecase-desc {
-            font-size: 12px;
-            color: var(--text-body);
-            line-height: 1.7;
-        }
-        .usecase-note {
-            text-align: center;
-            font-size: 12px;
-            color: var(--text-faint);
-            margin-top: 32px;
-        }
-        @media (max-width: 900px) {
-            .usecase-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 480px) {
-            .usecase-grid { grid-template-columns: 1fr; gap: 14px; }
-        }
-
-        /* ════════════════════════════════════════
            PROOF
         ════════════════════════════════════════ */
         .proof { background: var(--bg-surface); }
@@ -1052,72 +959,6 @@
            PRICING (Stripe-style)
         ════════════════════════════════════════ */
         .pricing { background: var(--bg-surface); }
-        .anchor-compare {
-            max-width: 720px;
-            margin: 0 auto 56px;
-            padding: 28px 24px;
-            background: var(--bg-elevated);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--r-lg);
-        }
-        .anchor-compare__row {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 16px;
-            align-items: center;
-        }
-        .anchor-compare__col { text-align: center; }
-        .anchor-compare__col--market .anchor-compare__val {
-            color: var(--text-muted);
-            text-decoration: line-through;
-            text-decoration-color: rgba(184,137,59,.5);
-            text-decoration-thickness: 2px;
-        }
-        .anchor-compare__col--ours .anchor-compare__val {
-            color: var(--green-deep);
-            font-weight: 700;
-        }
-        .anchor-compare__lbl {
-            font-size: 11px;
-            color: var(--text-muted);
-            letter-spacing: .08em;
-            margin-bottom: 6px;
-            font-weight: 500;
-        }
-        .anchor-compare__val {
-            font-family: var(--f-serif);
-            font-size: 22px;
-            font-weight: 600;
-            font-feature-settings: "tnum" 1;
-            line-height: 1.2;
-        }
-        .anchor-compare__val span {
-            font-family: var(--f-sans);
-            font-size: 11px;
-            font-weight: 400;
-            color: var(--text-muted);
-            margin-left: 3px;
-        }
-        .anchor-compare__arr {
-            color: var(--text-faint);
-            font-size: 22px;
-            font-weight: 300;
-        }
-        .anchor-compare__note {
-            font-size: 10px;
-            color: var(--text-faint);
-            margin-top: 4px;
-            letter-spacing: .03em;
-        }
-        @media (max-width: 600px) {
-            .anchor-compare { padding: 22px 16px; }
-            .anchor-compare__row {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            .anchor-compare__arr { transform: rotate(90deg); }
-            .anchor-compare__val { font-size: 20px; }
-        }
 
         /* コミュニティ強調カード */
         .community-plan {
@@ -1417,82 +1258,6 @@
         /* ════════════════════════════════════════
            OFFER
         ════════════════════════════════════════ */
-        /* ════════════════════════════════════════
-           ROADMAP
-        ════════════════════════════════════════ */
-        .roadmap { background: var(--bg-surface); }
-        .roadmap-flow {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            counter-reset: roadmap;
-        }
-        .roadmap-step {
-            position: relative;
-            padding: 28px 22px;
-            background: var(--bg-elevated);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--r-md);
-        }
-        .roadmap-step::after {
-            content: '→';
-            position: absolute;
-            top: 50%; right: -14px;
-            transform: translateY(-50%);
-            color: var(--text-faint);
-            font-size: 18px;
-            z-index: 2;
-        }
-        .roadmap-step:last-child::after { display: none; }
-        .roadmap-step__num {
-            font-family: var(--f-serif);
-            font-size: 28px;
-            color: var(--gold);
-            font-weight: 600;
-            line-height: 1;
-            margin-bottom: 10px;
-            font-feature-settings: "tnum" 1;
-        }
-        .roadmap-step__day {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--green-deep);
-            background: var(--green-bg);
-            padding: 3px 10px;
-            border-radius: 100px;
-            margin-bottom: 12px;
-            letter-spacing: .04em;
-        }
-        .roadmap-step__title {
-            font-family: var(--f-serif);
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-        .roadmap-step__desc {
-            font-size: 12px;
-            color: var(--text-body);
-            line-height: 1.75;
-        }
-        @media (max-width: 900px) {
-            .roadmap-flow { grid-template-columns: repeat(2, 1fr); }
-            .roadmap-step:nth-child(2)::after { display: none; }
-        }
-        @media (max-width: 480px) {
-            .roadmap-flow { grid-template-columns: 1fr; }
-            .roadmap-step::after {
-                content: '↓';
-                top: auto; bottom: -16px;
-                left: 50%; right: auto;
-                transform: translateX(-50%);
-            }
-            .roadmap-step:nth-child(2)::after { display: block; }
-            .roadmap-step:last-child::after { display: none; }
-        }
-
         .offer { background: var(--bg-canvas); }
         .offer-grid {
             display: grid;
@@ -1838,54 +1603,6 @@
         }
 
         /* ════════════════════════════════════════
-           FLOATING CTA (Mobile only)
-        ════════════════════════════════════════ */
-        .floating-cta {
-            position: fixed;
-            left: 12px; right: 12px; bottom: 12px;
-            z-index: 80;
-            display: none;
-            background: var(--green);
-            color: #fff;
-            text-decoration: none;
-            padding: 14px 18px;
-            border-radius: var(--r-md);
-            font-size: 14px;
-            font-weight: 600;
-            text-align: center;
-            box-shadow: 0 12px 32px rgba(4,120,87,.35), 0 2px 8px rgba(0,0,0,.12);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity .3s ease, transform .3s ease;
-            pointer-events: none;
-        }
-        .floating-cta.visible {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-        .floating-cta__urg {
-            font-size: 11px;
-            color: rgba(255,255,255,.85);
-            font-weight: 500;
-            margin-bottom: 2px;
-            letter-spacing: .06em;
-        }
-        .floating-cta__main {
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-        }
-        .floating-cta__arrow {
-            transition: transform .2s ease;
-        }
-        .floating-cta:active .floating-cta__arrow {
-            transform: translateX(3px);
-        }
-        @media (max-width: 768px) {
-            .floating-cta { display: block; }
-            /* Final CTA / Footerと被らないようサイズ調整は visible-class外でも自然に */
-        }
-
-        /* ════════════════════════════════════════
            FOOTER
         ════════════════════════════════════════ */
         footer {
@@ -1925,22 +1642,21 @@
             AI活用 × 個人事業主コミュニティ
         </div>
         <h1 class="hero-title">
-            AIは学んだ。でも、<br><span class="accent">仕事には繋がっていない。</span>
+            AIを触るだけで、<br><span class="accent">終わっていませんか？</span>
         </h1>
         <p class="hero-sub">
-            学んで終わらせない。<br>チームで実践し、収益まで届ける。
+            学ぶ → 実践する → 稼ぐ。<br>この３ステップを、チームで完結する。
         </p>
         <p class="hero-concept">個人事業主・副業者のための「事業者チーム」 ― ライトザライト</p>
         <div class="hero-ctas">
-            <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
-                LINEで詳細を受け取る（30秒）
+            <a href="#offer" class="btn btn-primary btn-lg">
+                今すぐ詳細を見る
                 <span class="btn-arrow">→</span>
             </a>
-            <a href="#pricing" class="btn btn-secondary btn-lg">
-                料金プランを見る
+            <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="btn btn-secondary btn-lg">
+                LINEで質問する
             </a>
         </div>
-        <p class="hero-cta-microcopy">※登録後、コミュニティの詳細案内が届きます。決済はありません。</p>
         <p class="hero-cta-note">定員20名｜残り5名</p>
         <div class="hero-stats">
             <div class="hero-stat">
@@ -2117,43 +1833,6 @@
     </div>
 </section>
 
-<!-- USE CASES (業種別) -->
-<section class="sec usecases">
-    <div class="container">
-        <div class="sec-head center fade">
-            <span class="eyebrow center">Use Cases</span>
-            <h2 class="h-1">こんな業種の方が成果を出しています</h2>
-        </div>
-        <div class="usecase-grid">
-            <div class="usecase-card fade">
-                <div class="usecase-icon">✍️</div>
-                <div class="usecase-role">Webライター</div>
-                <div class="usecase-result">記事作成 <strong>10時間 → 3時間</strong></div>
-                <p class="usecase-desc">AIライティングを業務フローに組込み、リサーチ〜執筆〜推敲までを1/3の時間で完結。</p>
-            </div>
-            <div class="usecase-card fade">
-                <div class="usecase-icon">🎬</div>
-                <div class="usecase-role">広報・PR / CS</div>
-                <div class="usecase-result">資料作成 <strong>従来の1/10</strong></div>
-                <p class="usecase-desc">NotebookLM等を活用し、社内資料・セミナー資料の作成スピードを劇的に短縮。</p>
-            </div>
-            <div class="usecase-card fade">
-                <div class="usecase-icon">💆</div>
-                <div class="usecase-role">整体師・店舗系</div>
-                <div class="usecase-result">業務時間 <strong>1/3に短縮</strong></div>
-                <p class="usecase-desc">予約管理・記録・配信文作成にAIを導入。本業（接客・施術）に集中できる時間が増加。</p>
-            </div>
-            <div class="usecase-card fade">
-                <div class="usecase-icon">🎨</div>
-                <div class="usecase-role">Webディレクター</div>
-                <div class="usecase-result">アプリ開発を<strong>"楽しい"に</strong></div>
-                <p class="usecase-desc">非エンジニアでも、AIサポートでツール開発が可能に。クライアント提案の幅も広がる。</p>
-            </div>
-        </div>
-        <p class="usecase-note fade">※ 在籍メンバーの実例より。あなたの業種でも、必ず効率化できる業務があります。</p>
-    </div>
-</section>
-
 <!-- ACTIVITY -->
 <section class="sec activity">
     <div class="container">
@@ -2280,28 +1959,12 @@
 </section>
 
 <!-- PRICING -->
-<section class="sec pricing" id="pricing">
+<section class="sec pricing">
     <div class="container">
         <div class="sec-head center fade">
             <span class="eyebrow center">Pricing</span>
             <h2 class="h-1">料金プラン</h2>
             <p class="lead center">まずはコミュニティプランから。個別サポートが必要な方は面談プランをお選びください。</p>
-        </div>
-
-        <!-- 比較アンカリング -->
-        <div class="anchor-compare fade">
-            <div class="anchor-compare__row">
-                <div class="anchor-compare__col anchor-compare__col--market">
-                    <div class="anchor-compare__lbl">個別AIコンサル 一般相場</div>
-                    <div class="anchor-compare__val">¥15,000〜30,000<span>/回</span></div>
-                </div>
-                <div class="anchor-compare__arr">→</div>
-                <div class="anchor-compare__col anchor-compare__col--ours">
-                    <div class="anchor-compare__lbl">ライトザライト（スタンダード）</div>
-                    <div class="anchor-compare__val">¥3,500<span>/回 相当</span></div>
-                    <div class="anchor-compare__note">面談1回あたり実質単価（コミュ込）</div>
-                </div>
-            </div>
         </div>
 
         <!-- コミュニティ強調カード -->
@@ -2398,43 +2061,6 @@
     </div>
 </section>
 
-<!-- ROADMAP (入会後の流れ) -->
-<section class="sec roadmap">
-    <div class="container">
-        <div class="sec-head center fade">
-            <span class="eyebrow center">Roadmap</span>
-            <h2 class="h-1">入会後はどうなる？最初の流れ</h2>
-            <p class="lead center">登録から実践までは数日。迷子にならない設計です。</p>
-        </div>
-        <div class="roadmap-flow">
-            <div class="roadmap-step fade">
-                <div class="roadmap-step__num">01</div>
-                <div class="roadmap-step__day">Day 1</div>
-                <div class="roadmap-step__title">LINE登録 → 詳細案内</div>
-                <p class="roadmap-step__desc">LINEから案内が届き、内容や疑問にお答えします。決済はこの段階ではありません。</p>
-            </div>
-            <div class="roadmap-step fade">
-                <div class="roadmap-step__num">02</div>
-                <div class="roadmap-step__day">入会後</div>
-                <div class="roadmap-step__title">Slack招待＆特典受取</div>
-                <p class="roadmap-step__desc">コミュニティのSlackに招待。SEOプロンプト・基礎講座動画・過去アーカイブをすぐに利用可能。</p>
-            </div>
-            <div class="roadmap-step fade">
-                <div class="roadmap-step__num">03</div>
-                <div class="roadmap-step__day">Week 1〜</div>
-                <div class="roadmap-step__title">グループコンサルに参加</div>
-                <p class="roadmap-step__desc">月2回のZoomグループコンサルで他メンバーの事例を吸収。質問はSlackでいつでも。</p>
-            </div>
-            <div class="roadmap-step fade">
-                <div class="roadmap-step__num">04</div>
-                <div class="roadmap-step__day">Month 1〜</div>
-                <div class="roadmap-step__title">実践→収益化フェーズ</div>
-                <p class="roadmap-step__desc">学んだAI活用を自分の業務に展開。コミュ内の受発注機会にも参加できるように。</p>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- OFFER -->
 <section class="sec offer" id="offer">
     <div class="container">
@@ -2521,18 +2147,6 @@
         </div>
         <div class="faq-list">
             <div class="faq-item fade">
-                <div class="faq-q"><div class="faq-q-inner"><span class="faq-mark">Q</span>申し込み後の流れを教えてください</div><span class="faq-arrow">▼</span></div>
-                <div class="faq-a"><span class="faq-mark a">A</span><div>LINE登録後、ご質問やご希望をお伺いした上で、コミュニティの詳細をご案内します。<br>ご入会の意思が固まった段階でお手続きへ進み、Slackへご招待。すぐに特典やアーカイブを利用できる状態になります。LINE登録の段階では決済は発生しません。</div></div>
-            </div>
-            <div class="faq-item fade">
-                <div class="faq-q"><div class="faq-q-inner"><span class="faq-mark">Q</span>Slackは何に使うのですか？</div><span class="faq-arrow">▼</span></div>
-                <div class="faq-a"><span class="faq-mark a">A</span><div>メンバー間のコミュニケーション基盤として利用します。<br>AIに関する質問・実践報告・最新情報の共有・案件相談など、コミュニティの活動はすべてSlack上で行われます。普段Slackを使ったことがない方でも、招待後に使い方をご案内しますのでご安心ください。</div></div>
-            </div>
-            <div class="faq-item fade">
-                <div class="faq-q"><div class="faq-q-inner"><span class="faq-mark">Q</span>料金は他社と比べて高くないですか？</div><span class="faq-arrow">▼</span></div>
-                <div class="faq-a"><span class="faq-mark a">A</span><div>個別AIコンサルの一般相場が1回¥15,000〜¥30,000であることを踏まえると、ライトザライトのスタンダードプランは面談1回あたり実質¥3,500（コミュニティ込）と、相場の1/4以下です。<br>さらに、月2回のグループコンサル・Slackでの質問し放題・アーカイブ視聴・チーム内受発注の機会まで含まれるため、コスト対効果は高いと自負しています。すべて単月から参加可能です。</div></div>
-            </div>
-            <div class="faq-item fade">
                 <div class="faq-q"><div class="faq-q-inner"><span class="faq-mark">Q</span>AI初心者でも参加できますか？</div><span class="faq-arrow">▼</span></div>
                 <div class="faq-a"><span class="faq-mark a">A</span><div>はい、問題ありません。<br>過去のアーカイブでAIの基礎から学べるため、知識ゼロの状態からでも参加できます。また、面談付きプランでは個別サポートも受けられるため、初心者の方でも安心して進められます。</div></div>
             </div>
@@ -2577,12 +2191,6 @@
     </div>
 </section>
 
-<!-- FLOATING CTA (Mobile) -->
-<a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="floating-cta" id="floatingCta" aria-label="LINEで参加する">
-    <div class="floating-cta__urg">残り5名｜定員間近</div>
-    <div class="floating-cta__main">LINEで詳細を受け取る <span class="floating-cta__arrow">→</span></div>
-</a>
-
 <!-- FOOTER -->
 <footer>
     <div class="f-logo">Light<span>the</span>Light</div>
@@ -2617,27 +2225,6 @@
             if (!isOpen) item.classList.add('open');
         });
     });
-
-    // Floating CTA: Hero通過後に表示・最終CTA表示中は非表示
-    const floatingCta = document.getElementById('floatingCta');
-    const heroEl = document.querySelector('.hero');
-    const finalCtaEl = document.querySelector('.final-cta');
-    let heroPassed = false;
-    let finalVisible = false;
-    const updateFloatingCta = () => {
-        if (heroPassed && !finalVisible) floatingCta.classList.add('visible');
-        else floatingCta.classList.remove('visible');
-    };
-    if (heroEl && finalCtaEl && floatingCta) {
-        new IntersectionObserver(entries => {
-            heroPassed = !entries[0].isIntersecting;
-            updateFloatingCta();
-        }, { threshold: 0.1 }).observe(heroEl);
-        new IntersectionObserver(entries => {
-            finalVisible = entries[0].isIntersecting;
-            updateFloatingCta();
-        }, { threshold: 0.2 }).observe(finalCtaEl);
-    }
 </script>
 </body>
 </html>
