@@ -1136,6 +1136,23 @@
             color: var(--text-muted);
             margin-left: 4px;
         }
+        .plan-per-session {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-feature-settings: "tnum" 1;
+            margin-top: 4px;
+        }
+        .plan-per-session strong {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .plan-card--popular .plan-per-session {
+            color: var(--gold-deep);
+        }
+        .plan-card--popular .plan-per-session strong {
+            color: var(--gold-deep);
+            font-weight: 700;
+        }
         .plan-desc {
             font-size: 13px;
             color: var(--text-muted);
@@ -1983,12 +2000,14 @@
             <div class="plan-card">
                 <div class="plan-name">ライト</div>
                 <div class="plan-price"><span class="plan-yen">¥</span>13,500<span class="plan-unit">/月</span></div>
+                <div class="plan-per-session">面談1回あたり実質 <strong>¥4,000</strong></div>
                 <div class="plan-desc">個別Zoom面談2回＋コミュニティ全機能</div>
                 <ul class="plan-features">
                     <li>個別Zoom面談 <strong>2回</strong></li>
                     <li>コミュニティ全機能含む</li>
                     <li>AIコンサル（個別）</li>
                     <li>AI活用方法（個別）</li>
+                    <li>PC操作サポート（個別）</li>
                     <li>経理サポート（個別）</li>
                     <li>マーケティングコンサル（個別）</li>
                 </ul>
@@ -1998,12 +2017,14 @@
                 <div class="plan-badge">おすすめ</div>
                 <div class="plan-name">スタンダード</div>
                 <div class="plan-price"><span class="plan-yen">¥</span>19,500<span class="plan-unit">/月</span></div>
+                <div class="plan-per-session">面談1回あたり実質 <strong>¥3,500</strong>（最もお得）</div>
                 <div class="plan-desc">個別Zoom面談4回＋コミュニティ全機能</div>
                 <ul class="plan-features">
                     <li>個別Zoom面談 <strong>4回</strong></li>
                     <li>コミュニティ全機能含む</li>
                     <li>AIコンサル（個別）</li>
                     <li>AI活用方法（個別）</li>
+                    <li>PC操作サポート（個別）</li>
                     <li>経理サポート（個別）</li>
                     <li>マーケティングコンサル（個別）</li>
                 </ul>
@@ -2012,11 +2033,13 @@
             <div class="plan-card">
                 <div class="plan-name">ベーシック</div>
                 <div class="plan-price"><span class="plan-yen">¥</span>18,000<span class="plan-unit">/月</span></div>
+                <div class="plan-per-session">面談1回あたり <strong>¥4,500</strong></div>
                 <div class="plan-desc">個別Zoom面談4回のみ <span class="plan-warn">（コミュニティなし）</span></div>
                 <ul class="plan-features">
                     <li>個別Zoom面談 <strong>4回</strong></li>
                     <li>AIコンサル（個別）</li>
                     <li>AI活用方法（個別）</li>
+                    <li>PC操作サポート（個別）</li>
                     <li>経理サポート（個別）</li>
                     <li>マーケティングコンサル（個別）</li>
                 </ul>
