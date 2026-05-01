@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ライトザライト | AI活用×個人事業主コミュニティ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --gold: #E8A000;
+            --gold-light: #F5C340;
+            --gold-pale: #FFF4D4;
+            --gold-dark: #C47D00;
+            --gold-grad: linear-gradient(135deg, #E8A000 0%, #F5C340 100%);
+            --navy: #0D1B2A;
+            --navy-mid: #1B2E42;
+            --white: #FFFFFF;
+            --off-white: #FAFAF8;
+            --cream: #FFF9EC;
+            --text: #0D1B2A;
+            --text-sub: #4A5568;
+            --text-light: #718096;
+            --border: #E8E0D0;
+            --r: 12px;
+            --r-lg: 20px;
+            --sh-sm: 0 2px 8px rgba(0,0,0,.06);
+            --sh-md: 0 8px 30px rgba(0,0,0,.08);
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* ── Layout ── */
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+        .sec { padding: 88px 0; }
+
+        /* ── Typography ── */
+        .label {
+            display: inline-block;
+            font-size: .72rem; font-weight: 700;
+            letter-spacing: .15em; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 12px;
+        }
+        .sec-title {
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 900; line-height: 1.4;
+            color: var(--navy); margin-bottom: 16px;
+        }
+        .sec-desc {
+            font-size: .95rem; color: var(--text-sub);
+            max-width: 600px; margin: 0 auto; line-height: 1.9;
+        }
+
+        /* ── Buttons ── */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            gap: 8px; padding: 16px 40px; border-radius: 50px;
+            font-size: 1rem; font-weight: 700;
+            cursor: pointer; transition: all .3s; border: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #16A34A 0%, #22C55E 100%); color: #fff;
+            box-shadow: 0 4px 20px rgba(22,163,74,.35);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(22,163,74,.5); }
+        .btn-lg { padding: 20px 56px; font-size: 1.1rem; }
+        .btn-white { background: #fff; color: var(--gold); box-shadow: 0 8px 30px rgba(0,0,0,.15); }
+        .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,.2); }
+
+        /* ── Fade animation ── */
+        .fade { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+        .fade.on { opacity: 1; transform: translateY(0); }
+
+        /* ════════════════════════
+           NAV
+        ════════════════════════ */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+            background: rgba(255,255,255,.96); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border); transition: box-shadow .3s;
+        }
+        .nav.scrolled { box-shadow: var(--sh-md); }
+        .nav-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            height: 64px; max-width: 1080px; margin: 0 auto; padding: 0 24px;
+        }
+        .nav-logo { font-size: 1.05rem; font-weight: 900; color: var(--navy); letter-spacing: .04em; }
+        .nav-logo span { color: var(--gold); }
+        .nav-cta {
+            background: linear-gradient(135deg,#16A34A,#22C55E); color: #fff;
+            padding: 8px 22px; border-radius: 50px;
+            font-size: .82rem; font-weight: 700; transition: all .3s;
+        }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(22,163,74,.4); }
+
+        /* ════════════════════════
+           HERO
+        ════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; top: -180px; left: 50%; transform: translateX(-50%);
+            width: 900px; height: 900px;
+            background: radial-gradient(circle, rgba(232,160,0,.07) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gold-pale); color: var(--gold);
+            border: 1px solid rgba(232,160,0,.3);
+            padding: 6px 20px; border-radius: 50px;
+            font-size: .78rem; font-weight: 700;
+            letter-spacing: .05em; margin-bottom: 32px;
+        }
+        .hero-badge-dot {
+            width: 8px; height: 8px;
+            background: var(--gold); border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%,100% { opacity:1; transform:scale(1); }
+            50% { opacity:.5; transform:scale(1.4); }
+        }
+        .hero-title {
+            font-size: clamp(2rem, 6vw, 3.8rem);
+            font-weight: 900; line-height: 1.25;
+            color: var(--navy); margin-bottom: 24px;
+            letter-spacing: -.02em;
+        }
+        .hero-title .hl {
+            color: var(--gold); position: relative;
+        }
+        .hero-title .hl::after {
+            content: ''; position: absolute;
+            bottom: -4px; left: 0; right: 0;
+            height: 4px; background: var(--gold-grad); border-radius: 2px;
+        }
+        .hero-sub {
+            font-size: clamp(.95rem, 2vw, 1.15rem);
+            color: var(--text-sub); max-width: 560px;
+            margin: 0 auto 12px; line-height: 1.9;
+        }
+        .hero-concept {
+            font-size: .88rem; color: var(--text-light); margin-bottom: 48px;
+        }
+        .hero-cta-note { font-size: .78rem; color: var(--text-light); margin-top: 12px; }
+        .hero-stats {
+            display: flex; gap: 48px;
+            margin-top: 64px; padding-top: 48px;
+            border-top: 1px solid var(--border);
+        }
+        .hero-stat { text-align: center; }
+        .hero-stat-num { display: block; font-size: 2rem; font-weight: 900; color: var(--navy); }
+        .hero-stat-num span { color: var(--gold); }
+        .hero-stat-lbl { font-size: .78rem; color: var(--text-light); }
+
+        /* ════════════════════════
+           PROBLEM
+        ════════════════════════ */
+        .problem { background: var(--navy); padding: 88px 0; }
+        .problem-hd { text-align: center; margin-bottom: 48px; }
+        .problem-hd h2 { font-size: clamp(1.5rem,4vw,2.2rem); font-weight: 900; color: #fff; margin-bottom: 8px; }
+        .problem-hd p { color: rgba(255,255,255,.55); font-size: .9rem; }
+        .problem-grid {
+            display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+            gap: 16px; margin-bottom: 48px;
+        }
+        .p-item {
+            display: flex; align-items: flex-start; gap: 14px;
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.09);
+            border-radius: var(--r); padding: 20px;
+            transition: border-color .3s;
+        }
+        .p-item:hover { border-color: rgba(232,160,0,.3); }
+        .p-icon {
+            width: 40px; height: 40px; min-width: 40px;
+            background: rgba(232,160,0,.12); border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+        }
+        .p-text { font-size: .88rem; color: rgba(255,255,255,.82); line-height: 1.65; }
+        .problem-bridge {
+            text-align: center; padding: 32px;
+            background: rgba(232,160,0,.1);
+            border: 1px solid rgba(232,160,0,.2);
+            border-radius: var(--r-lg);
+        }
+        .problem-bridge p { font-size: 1.15rem; font-weight: 700; color: var(--gold-light); margin-bottom: 6px; }
+        .problem-bridge small { font-size: .82rem; color: rgba(255,255,255,.55); }
+
+        /* ════════════════════════
+           SOLUTION
+        ════════════════════════ */
+        .solution { background: var(--off-white); }
+        .sol-hd { text-align: center; margin-bottom: 56px; }
+        .sol-concept {
+            background: #fff; border-radius: var(--r-lg);
+            padding: 48px; border: 1px solid var(--border);
+            box-shadow: var(--sh-md); margin-bottom: 40px;
+            text-align: center;
+        }
+        .sol-concept h3 { font-size: 1.45rem; font-weight: 900; color: var(--navy); margin-bottom: 16px; line-height: 1.5; }
+        .sol-concept h3 span { color: var(--gold); }
+        .sol-concept p { font-size: .95rem; color: var(--text-sub); margin-bottom: 32px; line-height: 2; }
+        .sol-flow { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: nowrap; }
+        .flow-circle {
+            width: 90px; height: 90px; border-radius: 50%;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            font-weight: 700; font-size: .82rem; text-align: center; line-height: 1.4;
+            flex-shrink: 0;
+        }
+        .flow-circle.outline { border: 2px solid var(--border); color: var(--text-sub); background: #fff; }
+        .flow-circle.gold { background: var(--gold-grad); color: #fff; }
+        .flow-arr { font-size: 1.5rem; color: var(--gold); padding: 0 10px; margin-top: -8px; flex-shrink: 0; }
+        .sol-points {
+            display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 20px;
+        }
+        .sol-point {
+            background: #fff; border-radius: var(--r); padding: 28px 22px;
+            text-align: center; border: 1px solid var(--border);
+            box-shadow: var(--sh-sm); transition: all .3s;
+        }
+        .sol-point:hover { transform: translateY(-4px); box-shadow: var(--sh-md); border-color: var(--gold); }
+        .sol-point-icon { font-size: 1.9rem; margin-bottom: 12px; display: block; }
+        .sol-point h4 { font-weight: 700; font-size: .9rem; color: var(--navy); margin-bottom: 8px; }
+        .sol-point p { font-size: .78rem; color: var(--text-sub); line-height: 1.75; }
+
+        /* ════════════════════════
+           BEFORE / AFTER
+        ════════════════════════ */
+        .benefits { background: #fff; }
+        .ba-hd { text-align: center; margin-bottom: 56px; }
+        .ba-wrap {
+            display: grid; grid-template-columns: 1fr auto 1fr;
+            gap: 20px; align-items: start; margin-bottom: 48px;
+        }
+        .ba-col { border-radius: var(--r-lg); overflow: hidden; }
+        .ba-head { padding: 14px 20px; font-weight: 700; font-size: .95rem; text-align: center; }
+        .ba-col.before .ba-head { background: #EFEFEF; color: var(--text-sub); }
+        .ba-col.after .ba-head { background: var(--gold-grad); color: #fff; }
+        .ba-body { padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+        .ba-col.before .ba-body { background: #F7F7F7; }
+        .ba-col.after .ba-body { background: var(--cream); }
+        .ba-item { display: flex; align-items: flex-start; gap: 10px; font-size: .88rem; line-height: 1.65; }
+        .ba-col.before .ba-item { color: var(--text-sub); }
+        .ba-col.after .ba-item { color: var(--navy); font-weight: 500; }
+        .ba-arr { display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--gold); padding-top: 56px; }
+        .num-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 16px; }
+        .num-card { background: var(--navy); border-radius: var(--r); padding: 28px 22px; text-align: center; color: #fff; }
+        .num-from { font-size: .75rem; color: rgba(255,255,255,.45); margin-bottom: 4px; }
+        .num-val { display: block; font-size: 1.8rem; font-weight: 900; color: var(--gold-light); margin-bottom: 6px; }
+        .num-lbl { font-size: .78rem; color: rgba(255,255,255,.65); }
+
+        /* ════════════════════════
+           SERVICES
+        ════════════════════════ */
+        .services { background: var(--off-white); }
+        .srv-hd { text-align: center; margin-bottom: 56px; }
+        .srv-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 22px; }
+        .srv-card {
+            background: #fff; border-radius: var(--r-lg); padding: 32px 26px;
+            border: 1px solid var(--border); box-shadow: var(--sh-sm);
+            transition: all .3s;
+        }
+        .srv-card:hover { transform: translateY(-4px); box-shadow: var(--sh-md); border-color: rgba(232,160,0,.3); }
+        .srv-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            background: var(--gold-pale); display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; margin-bottom: 18px;
+        }
+        .srv-card h3 { font-weight: 700; font-size: .95rem; color: var(--navy); margin-bottom: 8px; }
+        .srv-card p { font-size: .82rem; color: var(--text-sub); line-height: 1.8; }
+
+        /* ════════════════════════
+           ACTIVITY
+        ════════════════════════ */
+        .activity { background: var(--navy); }
+        .activity .label { color: var(--gold-light); }
+        .activity .sec-title { color: #fff; }
+        .activity .sec-desc { color: rgba(255,255,255,.55); }
+        .act-hd { text-align: center; margin-bottom: 48px; }
+        .act-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .act-item {
+            border-radius: var(--r); overflow: hidden;
+            position: relative; cursor: default;
+        }
+        .act-item img {
+            width: 100%; height: 220px;
+            object-fit: cover; display: block;
+            transition: transform .4s ease;
+        }
+        .act-item:hover img { transform: scale(1.04); }
+        .act-caption {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,.75));
+            color: #fff; font-size: .78rem; font-weight: 500;
+            padding: 24px 14px 12px;
+        }
+        @media (max-width: 600px) { .act-grid { grid-template-columns: 1fr; } }
+
+        /* ════════════════════════
+           PROOF
+        ════════════════════════ */
+        .proof { background: #fff; }
+        .proof-hd { text-align: center; margin-bottom: 56px; }
+        .proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        .profile-card {
+            background: var(--off-white); border-radius: var(--r-lg);
+            padding: 40px; border: 1px solid var(--border);
+        }
+        .profile-top { display: flex; align-items: center; gap: 18px; margin-bottom: 24px; }
+        .profile-avatar {
+            width: 80px; height: 80px; border-radius: 50%;
+            background: var(--gold-grad); display: flex;
+            align-items: center; justify-content: center;
+            font-size: 1.8rem; color: #fff; font-weight: 900; flex-shrink: 0;
+            overflow: hidden; border: 3px solid var(--gold);
+        }
+        .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-name { font-size: 1.25rem; font-weight: 900; color: var(--navy); }
+        .profile-role { font-size: .78rem; color: var(--text-light); margin-top: 4px; }
+        .profile-items { display: flex; flex-direction: column; gap: 10px; }
+        .profile-item {
+            display: flex; gap: 10px; font-size: .85rem; color: var(--text-sub); align-items: flex-start;
+        }
+        .profile-item::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+        .proof-stats { display: flex; flex-direction: column; gap: 18px; }
+        .stat-blk { background: var(--navy); border-radius: var(--r); padding: 24px 26px; color: #fff; }
+        .stat-blk-num { display: block; font-size: 2.2rem; font-weight: 900; color: var(--gold-light); line-height: 1; margin-bottom: 6px; }
+        .stat-blk-lbl { font-size: .82rem; color: rgba(255,255,255,.65); }
+        .media-blk { border: 2px solid var(--border); border-radius: var(--r); padding: 18px 22px; }
+        .media-lbl { font-size: .7rem; font-weight: 700; color: var(--gold); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px; }
+        .media-name { font-size: .88rem; font-weight: 700; color: var(--navy); }
+
+        /* ════════════════════════
+           TESTIMONIALS
+        ════════════════════════ */
+        .testimonials { background: var(--cream); }
+        .tes-hd { text-align: center; margin-bottom: 56px; }
+        .tes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+        @media (max-width: 900px) { .tes-grid { grid-template-columns: repeat(2,1fr); } }
+        @media (max-width: 560px) { .tes-grid { grid-template-columns: 1fr; } }
+        .tes-card {
+            background: #fff; border-radius: var(--r-lg); padding: 30px 26px;
+            box-shadow: var(--sh-sm); border: 1px solid var(--border);
+            position: relative; transition: all .3s;
+        }
+        .tes-card:hover { transform: translateY(-2px); box-shadow: var(--sh-md); }
+        .tes-card::before {
+            content: '"'; position: absolute; top: 12px; left: 18px;
+            font-size: 4rem; color: var(--gold); opacity: .15;
+            font-family: serif; line-height: 1;
+        }
+        .tes-text { font-size: .88rem; color: var(--text); line-height: 1.9; margin-bottom: 18px; padding-top: 8px; }
+        .tes-hl {
+            display: inline; background: var(--gold-pale);
+            color: var(--gold-dark); font-weight: 700;
+            padding: 1px 6px; border-radius: 4px;
+        }
+        .tes-author {
+            display: flex; align-items: center; gap: 12px;
+            padding-top: 14px; border-top: 1px solid var(--border);
+        }
+        .tes-avatar {
+            width: 38px; height: 38px; border-radius: 50%;
+            background: var(--gold-grad); display: flex;
+            align-items: center; justify-content: center;
+            color: #fff; font-size: .78rem; font-weight: 700;
+        }
+        .tes-name { font-size: .78rem; font-weight: 700; color: var(--navy); }
+        .tes-role { font-size: .72rem; color: var(--text-light); }
+
+        /* ════════════════════════
+           PRICING
+        ════════════════════════ */
+        .pricing { background: var(--off-white); }
+        .pricing-hd { text-align: center; margin-bottom: 48px; }
+
+        /* コミュニティ強調カード */
+        .community-plan {
+            display: grid; grid-template-columns: 1fr 1.3fr;
+            gap: 0; background: var(--navy);
+            border-radius: var(--r-lg); overflow: hidden;
+            margin-bottom: 40px; box-shadow: var(--sh-md);
+        }
+        .community-plan__left {
+            padding: 44px 40px; display: flex; flex-direction: column; gap: 14px;
+        }
+        .community-plan__tag {
+            display: inline-block; background: rgba(255,255,255,.12);
+            color: var(--gold-light); font-size: .72rem; font-weight: 700;
+            letter-spacing: .1em; padding: 4px 14px; border-radius: 50px;
+            width: fit-content;
+        }
+        .community-plan__name { font-size: 1.6rem; font-weight: 900; color: #fff; }
+        .community-plan__price {
+            font-size: 3.2rem; font-weight: 900; color: #fff; line-height: 1;
+        }
+        .community-plan__price span { font-size: 1.5rem; }
+        .community-plan__price small { font-size: 1rem; font-weight: 400; color: rgba(255,255,255,.5); }
+        .community-plan__desc { font-size: .85rem; color: rgba(255,255,255,.65); line-height: 1.8; }
+        .community-plan__right {
+            background: rgba(255,255,255,.05);
+            border-left: 1px solid rgba(255,255,255,.1);
+            padding: 44px 40px;
+        }
+        .community-plan__features-title {
+            font-size: .72rem; font-weight: 700; color: var(--gold-light);
+            letter-spacing: .1em; text-transform: uppercase; margin-bottom: 20px;
+        }
+        .community-plan__features { display: flex; flex-direction: column; gap: 16px; }
+        .cpf-item { display: flex; align-items: flex-start; gap: 14px; }
+        .cpf-icon {
+            width: 36px; height: 36px; min-width: 36px;
+            background: rgba(232,160,0,.15); border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; font-size: 1rem;
+        }
+        .cpf-item strong { font-size: .88rem; color: #fff; display: block; margin-bottom: 2px; }
+        .cpf-item small { font-size: .75rem; color: rgba(255,255,255,.5); }
+
+        /* プレミアムプランラベル */
+        .zoom-plan-label {
+            text-align: center; margin-bottom: 20px;
+        }
+        .zoom-plan-label span {
+            display: inline-block;
+            font-size: .8rem; font-weight: 700; color: var(--text-sub);
+            border: 1px solid var(--border); background: #fff;
+            padding: 6px 24px; border-radius: 50px; letter-spacing: .04em;
+        }
+
+        /* プレミアムプラン3カラム */
+        .zoom-plan-grid {
+            display: grid; grid-template-columns: repeat(3,1fr);
+            gap: 20px; margin-bottom: 20px; align-items: start;
+        }
+        @media (max-width: 900px) {
+            .zoom-plan-grid {
+                display: flex; flex-wrap: nowrap;
+                overflow-x: auto; gap: 16px;
+                padding: 20px 4px 16px;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+            }
+            .zoom-plan-grid .plan-card {
+                min-width: 80vw; scroll-snap-align: start; flex-shrink: 0;
+            }
+            .plan-card--popular { transform: none; }
+        }
+        .plan-card {
+            background: #fff; border-radius: var(--r-lg);
+            padding: 28px 22px; border: 2px solid var(--border);
+            box-shadow: var(--sh-sm); position: relative;
+            display: flex; flex-direction: column; gap: 12px;
+        }
+        .plan-card--popular {
+            border-color: #16A34A;
+            box-shadow: 0 8px 32px rgba(22,163,74,.15);
+            transform: translateY(-6px);
+        }
+        .plan-badge {
+            position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(135deg,#16A34A,#22C55E);
+            color: #fff; font-size: .7rem; font-weight: 700;
+            padding: 4px 16px; border-radius: 50px; white-space: nowrap;
+        }
+        .plan-name { font-weight: 900; font-size: .95rem; color: var(--navy); }
+        .plan-price { font-size: 1.8rem; font-weight: 900; color: var(--navy); line-height: 1; }
+        .plan-yen { font-size: 1rem; font-weight: 700; }
+        .plan-unit { font-size: .8rem; font-weight: 500; color: var(--text-light); }
+        .plan-desc { font-size: .78rem; color: var(--text-sub); line-height: 1.6; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+        .plan-features { list-style: none; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+        .plan-features li { font-size: .8rem; color: var(--text-sub); display: flex; align-items: center; gap: 8px; }
+        .plan-features li::before { content: '✓'; color: #16A34A; font-weight: 700; flex-shrink: 0; }
+        .plan-features li strong { color: var(--navy); }
+
+        /* 個別面談（単発） */
+        .tanpatsu-plan {
+            background: #fff; border-radius: var(--r); border: 1px solid var(--border);
+            padding: 20px 28px; margin-bottom: 16px;
+        }
+        .tanpatsu-plan__inner {
+            display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+        }
+        .tanpatsu-plan__name { font-weight: 700; font-size: .9rem; color: var(--navy); margin-bottom: 4px; }
+        .tanpatsu-plan__desc { font-size: .78rem; color: var(--text-light); }
+        .tanpatsu-plan__price { font-size: 1.5rem; font-weight: 900; color: var(--navy); white-space: nowrap; margin-left: auto; }
+        .tanpatsu-plan__price span { font-size: .8rem; font-weight: 400; color: var(--text-light); }
+
+        .pricing-note { text-align: center; font-size: .78rem; color: var(--text-light); margin-top: 8px; }
+
+        @media (max-width: 900px) {
+            .community-plan { grid-template-columns: 1fr; }
+            .community-plan__right { border-left: none; border-top: 1px solid rgba(255,255,255,.1); }
+            .tanpatsu-plan__price { margin-left: 0; }
+        }
+
+        /* ════════════════════════
+           OFFER
+        ════════════════════════ */
+        .offer { background: #fff; }
+        .offer-hd { text-align: center; margin-bottom: 56px; }
+        .offer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 40px; }
+        .offer-benefits {
+            background: var(--off-white); border-radius: var(--r-lg);
+            padding: 36px; border: 1px solid var(--border);
+        }
+        .offer-benefits h3 { font-weight: 700; font-size: .95rem; color: var(--navy); margin-bottom: 20px; }
+        .benefit-row {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 12px 0; border-bottom: 1px solid var(--border);
+            font-size: .85rem; color: var(--text-sub);
+        }
+        .benefit-row:last-child { border-bottom: none; }
+        .benefit-row .mark { color: var(--gold); flex-shrink: 0; font-weight: 700; }
+        .benefit-row strong { color: var(--navy); }
+        .benefit-row small { display: block; font-size: .75rem; color: var(--text-light); margin-top: 2px; }
+        .offer-urgency {
+            background: var(--navy); border-radius: var(--r-lg);
+            padding: 36px; color: #fff; display: flex; flex-direction: column; justify-content: center;
+        }
+        .urg-label { font-size: .72rem; font-weight: 700; letter-spacing: .15em; color: var(--gold-light); text-transform: uppercase; margin-bottom: 14px; }
+        .urg-title { font-size: 1.35rem; font-weight: 900; line-height: 1.5; margin-bottom: 22px; }
+        .urg-title span { color: var(--gold-light); }
+        .bar-labels { display: flex; justify-content: space-between; font-size: .75rem; color: rgba(255,255,255,.5); margin-bottom: 8px; }
+        .bar-track { height: 10px; background: rgba(255,255,255,.1); border-radius: 5px; overflow: hidden; margin-bottom: 8px; }
+        .bar-fill { height: 100%; width: 75%; background: var(--gold-grad); border-radius: 5px; animation: fill 1.6s ease-out; }
+        @keyframes fill { from { width:0; } to { width:75%; } }
+        .bar-note { font-size: .75rem; color: rgba(255,255,255,.4); margin-bottom: 20px; }
+        .urg-ease { border-top: 1px solid rgba(255,255,255,.1); padding-top: 18px; display: flex; flex-direction: column; gap: 7px; }
+        .urg-ease-item { font-size: .8rem; color: rgba(255,255,255,.65); display: flex; align-items: center; gap: 8px; }
+        .urg-ease-item::before { content: '✓'; color: var(--gold-light); }
+        .cta-box {
+            text-align: center; padding: 56px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+            border-radius: var(--r-lg); color: #fff;
+        }
+        .cta-box h2 { font-size: clamp(1.3rem,3vw,2rem); font-weight: 900; margin-bottom: 14px; }
+        .cta-box p { font-size: .92rem; color: rgba(255,255,255,.65); max-width: 480px; margin: 0 auto 32px; }
+        .cta-box-note { margin-top: 14px; font-size: .75rem; color: rgba(255,255,255,.35); }
+
+        /* ════════════════════════
+           STORY
+        ════════════════════════ */
+        .story { background: var(--off-white); }
+        .story-inner { max-width: 720px; margin: 0 auto; }
+        .story-hd { margin-bottom: 40px; }
+        .story-body { font-size: .97rem; color: var(--text-sub); line-height: 2.2; }
+        .story-body p { margin-bottom: 22px; }
+        .story-body .em { color: var(--navy); font-weight: 700; }
+        .story-body .gd { color: var(--gold); font-weight: 700; }
+        .story-sig {
+            display: flex; align-items: center; gap: 16px;
+            margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--border);
+        }
+        .sig-avatar {
+            width: 64px; height: 64px; border-radius: 50%;
+            background: var(--gold-grad); display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 900; font-size: 1.2rem; flex-shrink: 0;
+            overflow: hidden; border: 3px solid var(--gold);
+        }
+        .sig-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .sig-name { font-weight: 900; font-size: 1.05rem; color: var(--navy); }
+        .sig-role { font-size: .75rem; color: var(--text-light); margin-top: 3px; }
+
+        /* ════════════════════════
+           FINAL CTA
+        ════════════════════════ */
+        .final-cta {
+            background: linear-gradient(135deg,#16A34A 0%,#0D7A38 100%); padding: 100px 24px;
+            text-align: center; color: #fff;
+        }
+        .final-cta h2 { font-size: clamp(1.8rem,5vw,3rem); font-weight: 900; margin-bottom: 14px; text-shadow: 0 2px 4px rgba(0,0,0,.1); }
+        .final-cta p { font-size: .97rem; color: rgba(255,255,255,.85); max-width: 480px; margin: 0 auto 36px; }
+        .final-cta-note { margin-top: 18px; font-size: .78rem; color: rgba(255,255,255,.55); }
+
+        /* ════════════════════════
+           FAQ
+        ════════════════════════ */
+        .faq { background: var(--off-white); }
+        .faq-hd { text-align: center; margin-bottom: 48px; }
+        .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            box-shadow: var(--sh-sm);
+        }
+        .faq-q {
+            display: flex; align-items: flex-start; gap: 16px;
+            padding: 22px 28px;
+            font-weight: 700; font-size: 1rem; color: var(--navy);
+            cursor: pointer; user-select: none;
+            justify-content: space-between;
+        }
+        .faq-q-inner { display: flex; align-items: flex-start; gap: 16px; flex: 1; }
+        .faq-arrow {
+            flex-shrink: 0; width: 24px; height: 24px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gold); font-size: .85rem;
+            transition: transform .3s ease; margin-top: 4px;
+        }
+        .faq-item.open .faq-arrow { transform: rotate(180deg); }
+        .faq-a {
+            display: flex; align-items: flex-start; gap: 16px;
+            padding: 0 28px 22px;
+            font-size: .93rem; color: var(--text-sub); line-height: 1.9;
+            overflow: hidden; max-height: 0;
+            transition: max-height .35s ease, padding .35s ease;
+            padding-top: 0; padding-bottom: 0;
+        }
+        .faq-item.open .faq-a {
+            max-height: 300px;
+            padding-bottom: 22px;
+        }
+        .faq-mark {
+            flex-shrink: 0;
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 32px; height: 32px; border-radius: 50%;
+            font-weight: 900; font-size: .9rem;
+            background: var(--gold-grad); color: var(--white);
+        }
+        .faq-mark.a {
+            background: linear-gradient(135deg, #16A34A 0%, #22C55E 100%);
+        }
+
+        /* ════════════════════════
+           FOOTER
+        ════════════════════════ */
+        footer { background: var(--navy); color: rgba(255,255,255,.4); text-align: center; padding: 32px 24px; font-size: .78rem; }
+        footer .f-logo { color: #fff; font-weight: 900; font-size: .95rem; margin-bottom: 6px; }
+        footer .f-logo span { color: var(--gold); }
+
+        /* ════════════════════════
+           RESPONSIVE
+        ════════════════════════ */
+        @media (max-width: 768px) {
+            .sec { padding: 64px 0; }
+            .hero-stats { gap: 28px; flex-wrap: wrap; justify-content: center; }
+            .ba-wrap { grid-template-columns: 1fr; }
+            .ba-arr { padding-top: 0; transform: rotate(90deg); font-size: 2rem; }
+            .proof-grid { grid-template-columns: 1fr; }
+            .offer-grid { grid-template-columns: 1fr; }
+            .cta-box { padding: 40px 24px; }
+            .sol-concept { padding: 28px 20px; }
+            .flow-circle { width: 72px; height: 72px; font-size: .72rem; }
+        }
+        @media (max-width: 480px) {
+            .nav-cta { display: none; }
+            .problem-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+    <div class="nav-inner">
+        <div class="nav-logo">Light<span>the</span>Light</div>
+        <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="nav-cta">残り5名｜LINEから参加</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        AI活用 × 個人事業主コミュニティ
+    </div>
+    <h1 class="hero-title">
+        AIを触るだけで、<br><span class="hl">終わっていませんか？</span>
+    </h1>
+    <p class="hero-sub">
+        学ぶ → 実践する → 稼ぐ。<br>この３ステップを、チームで完結する。
+    </p>
+    <p class="hero-concept">個人事業主・副業者のための「事業者チーム」― ライトザライト</p>
+    <a href="#offer" class="btn btn-primary btn-lg">今すぐ詳細を見る →</a>
+    <p class="hero-cta-note">定員20名｜残り5名</p>
+    <div class="hero-stats">
+        <div class="hero-stat">
+            <span class="hero-stat-num">15<span>名</span></span>
+            <span class="hero-stat-lbl">現在の在籍数</span>
+        </div>
+        <div class="hero-stat">
+            <span class="hero-stat-num">1/<span>3</span></span>
+            <span class="hero-stat-lbl">作業時間の短縮実績</span>
+        </div>
+        <div class="hero-stat">
+            <span class="hero-stat-num">1/<span>10</span></span>
+            <span class="hero-stat-lbl">資料作成時間の削減実績</span>
+        </div>
+    </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+    <div class="container">
+        <div class="problem-hd fade">
+            <h2>こんなお悩み、ありませんか？</h2>
+            <p>AIに興味はあるのに、なかなか成果に繋がらない方へ</p>
+        </div>
+        <div class="problem-grid">
+            <div class="p-item fade"><div class="p-icon">😔</div><p class="p-text">AIを触っているのに、<br>成果に繋がらない</p></div>
+            <div class="p-item fade"><div class="p-icon">⏰</div><p class="p-text">作業に時間がかかりすぎて、<br>効率が上がらない</p></div>
+            <div class="p-item fade"><div class="p-icon">🤷</div><p class="p-text">何から学べばいいか分からず、<br>迷い続けている</p></div>
+            <div class="p-item fade"><div class="p-icon">😵</div><p class="p-text">情報が多すぎて、<br>何が正しいか判断できない</p></div>
+            <div class="p-item fade"><div class="p-icon">🙁</div><p class="p-text">一人だと継続できず、<br>三日坊主になってしまう</p></div>
+            <div class="p-item fade"><div class="p-icon">📊</div><p class="p-text">経理・税務・経営の知識がなく、<br>事業運営に不安がある</p></div>
+        </div>
+        <div class="problem-bridge fade">
+            <p>その悩み、一人で抱えなくていい。</p>
+            <small>ライトザライトは「知識を渡すだけ」のスクールではありません。<br>実務・収益・事業運営まで、チームとして伴走します。</small>
+        </div>
+    </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="sec solution">
+    <div class="container">
+        <div class="sol-hd fade">
+            <span class="label">What is LighttheLight</span>
+            <h2 class="sec-title">ライトザライトとは</h2>
+        </div>
+        <div class="sol-concept fade">
+            <h3>単なる勉強会ではない。<br><span>「事業者チーム」</span>として活動するコミュニティ。</h3>
+            <div class="sol-flow">
+                <div class="flow-circle outline">学ぶ</div>
+                <span class="flow-arr">→</span>
+                <div class="flow-circle outline">実践する</div>
+                <span class="flow-arr">→</span>
+                <div class="flow-circle gold">稼ぐ</div>
+            </div>
+        </div>
+        <div class="sol-points">
+            <div class="sol-point fade">
+                <span class="sol-point-icon">🤖</span>
+                <h4>AI実務スキルの習得</h4>
+                <p>プロンプト設計からアプリ開発まで、実務直結で習得</p>
+            </div>
+            <div class="sol-point fade">
+                <span class="sol-point-icon">💼</span>
+                <h4>チームでの案件獲得</h4>
+                <p>個人では難しい案件もチームで受注できる実践の場</p>
+            </div>
+            <div class="sol-point fade">
+                <span class="sol-point-icon">📚</span>
+                <h4>事業運営の知識</h4>
+                <p>経理・税務・経営の基礎まで、事業者に必要な知識を習得</p>
+            </div>
+            <div class="sol-point fade">
+                <span class="sol-point-icon">🔄</span>
+                <h4>継続できる環境</h4>
+                <p>Slackでいつでも相談できる。一人で迷わない環境がある</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="sec benefits">
+    <div class="container">
+        <div class="ba-hd fade">
+            <span class="label">Before / After</span>
+            <h2 class="sec-title">入会後の変化</h2>
+        </div>
+        <div class="ba-wrap fade">
+            <div class="ba-col before">
+                <div class="ba-head">😔 Before</div>
+                <div class="ba-body">
+                    <div class="ba-item"><span>✗</span>AIを触っているだけ、成果が出ない</div>
+                    <div class="ba-item"><span>✗</span>作業に時間がかかりすぎる</div>
+                    <div class="ba-item"><span>✗</span>何をすべきか迷い続ける</div>
+                    <div class="ba-item"><span>✗</span>一人では継続できない</div>
+                    <div class="ba-item"><span>✗</span>収益・経営に不安がある</div>
+                </div>
+            </div>
+            <div class="ba-arr">→</div>
+            <div class="ba-col after">
+                <div class="ba-head">✨ After</div>
+                <div class="ba-body">
+                    <div class="ba-item"><span>✓</span>AIを「成果に直結する形」で使える</div>
+                    <div class="ba-item"><span>✓</span>作業時間が大幅に短縮される</div>
+                    <div class="ba-item"><span>✓</span>やるべきことが明確になる</div>
+                    <div class="ba-item"><span>✓</span>チームの中で仕事の機会が生まれる</div>
+                    <div class="ba-item"><span>✓</span>事業運営の不安がなくなる</div>
+                </div>
+            </div>
+        </div>
+        <div class="num-grid fade">
+            <div class="num-card">
+                <div class="num-from">10時間 →</div>
+                <span class="num-val">3時間</span>
+                <div class="num-lbl">AIライティング導入後の作業時間</div>
+            </div>
+            <div class="num-card">
+                <div class="num-from">従来の作業時間の</div>
+                <span class="num-val">1/10</span>
+                <div class="num-lbl">セミナー資料作成時間の削減</div>
+            </div>
+            <div class="num-card">
+                <div class="num-from">作業時間が</div>
+                <span class="num-val">1/3</span>
+                <div class="num-lbl">AI活用後の全体的な効率改善</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec services">
+    <div class="container">
+        <div class="srv-hd fade">
+            <span class="label">Services</span>
+            <h2 class="sec-title">提供サービス</h2>
+        </div>
+        <div class="srv-grid">
+            <div class="srv-card fade">
+                <div class="srv-icon">🎯</div>
+                <h3>グループコンサル</h3>
+                <p>AI活用・事業相談をグループで実施。仲間の事例からも学べる</p>
+            </div>
+            <div class="srv-card fade">
+                <div class="srv-icon">📹</div>
+                <h3>個別Zoom面談</h3>
+                <p>プランに応じて1対1で相談。自分の課題をピンポイントで解決</p>
+            </div>
+            <div class="srv-card fade">
+                <div class="srv-icon">⚡</div>
+                <h3>AI実践ノウハウ共有</h3>
+                <p>最新AIツール・プロンプトを実務ベースで共有。即使える知識を得られる</p>
+            </div>
+            <div class="srv-card fade">
+                <div class="srv-icon">📱</div>
+                <h3>アプリ開発サポート</h3>
+                <p>業務効率化ツールの開発支援。苦手な方でも「作れる」体験ができる</p>
+            </div>
+            <div class="srv-card fade">
+                <div class="srv-icon">📚</div>
+                <h3>経理・税務・経営学習</h3>
+                <p>経営の基礎から税務まで。難しい内容もわかりやすく解説</p>
+            </div>
+            <div class="srv-card fade">
+                <div class="srv-icon">🤝</div>
+                <h3>チーム内受発注</h3>
+                <p>コミュニティ内で案件の受発注が発生。スキルを直接収益に変えられる</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ACTIVITY -->
+<section class="sec activity">
+    <div class="container">
+        <div class="act-hd fade">
+            <span class="label">Activity</span>
+            <h2 class="sec-title">活動の様子</h2>
+        </div>
+        <div class="act-grid">
+            <div class="act-item fade">
+                <img src="seminar1.png" alt="プロンプト筋トレ勉強会">
+                <div class="act-caption">プロンプト筋トレ ／ 自分でプロンプトを作れるワーク</div>
+            </div>
+            <div class="act-item fade">
+                <img src="seminar2.png" alt="GAS×AI実践講座">
+                <div class="act-caption">GAS × AI 実践講座 ／ 業務自動化ワーク</div>
+            </div>
+            <div class="act-item fade">
+                <img src="seminar3.png" alt="AI活用事例共有会">
+                <div class="act-caption">AI活用事例の共有会 ／ メンバーの実践報告</div>
+            </div>
+            <div class="act-item fade">
+                <img src="seminar4.png" alt="アプリ開発実践">
+                <div class="act-caption">アプリ開発実践 ／ ゼロからコードを作る体験</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROOF -->
+<section class="sec proof">
+    <div class="container">
+        <div class="proof-hd fade">
+            <span class="label">Trust &amp; Proof</span>
+            <h2 class="sec-title">信頼と実績</h2>
+        </div>
+        <div class="proof-grid">
+            <div class="profile-card fade">
+                <div class="profile-top">
+                    <div class="profile-avatar"><img src="profile.jpg" alt="根津仁志"></div>
+                    <div>
+                        <div class="profile-name">根津 仁志（サスケ）</div>
+                        <div class="profile-role">AIコンサル・講師・Webディレクター</div>
+                    </div>
+                </div>
+                <div class="profile-items">
+                    <div class="profile-item">現役AIスクール講師 ／ 200名以上の受講生を指導</div>
+                    <div class="profile-item">法人経理担当 ／ 元会計事務所勤務</div>
+                    <div class="profile-item">Webディレクター・Webマーケター ／ YouTubeチャンネル登録者 約2万人</div>
+                    <div class="profile-item">経営者としての実務経験あり</div>
+                </div>
+            </div>
+            <div class="proof-stats fade">
+                <div class="stat-blk">
+                    <span class="stat-blk-num">15名在籍</span>
+                    <span class="stat-blk-lbl">定員20名の少人数制コミュニティ</span>
+                </div>
+                <div class="stat-blk">
+                    <span class="stat-blk-num">残り5名</span>
+                    <span class="stat-blk-lbl">定員に達した時点で募集終了</span>
+                </div>
+                <div class="media-blk">
+                    <div class="media-lbl">Media</div>
+                    <div class="media-name">株式会社メイカヒット 公式掲載</div>
+                    <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;">
+                        <a href="https://make-a-hit.co.jp/news/25-1027/" target="_blank" rel="noopener" style="font-size:.78rem;color:var(--gold);word-break:break-all;">▶ make-a-hit.co.jp/news/25-1027/</a>
+                        <a href="https://make-a-hit.co.jp/news/25-0616/" target="_blank" rel="noopener" style="font-size:.78rem;color:var(--gold);word-break:break-all;">▶ make-a-hit.co.jp/news/25-0616/</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec testimonials">
+    <div class="container">
+        <div class="tes-hd fade">
+            <span class="label">Testimonials</span>
+            <h2 class="sec-title">メンバーの声</h2>
+            <p class="sec-desc">実際に参加されたメンバーからのリアルな声です</p>
+        </div>
+        <div class="tes-grid">
+            <div class="tes-card fade">
+                <p class="tes-text">AIライティングを導入したことで、<span class="tes-hl">10時間かかっていた作業が3時間に短縮</span>できました。こんなに変わるとは思っていませんでした。</p>
+                <div class="tes-author">
+                    <div class="tes-avatar">K</div>
+                    <div><div class="tes-name">Kさん・20代女性</div><div class="tes-role">Webライター</div></div>
+                </div>
+            </div>
+            <div class="tes-card fade">
+                <p class="tes-text">NotebookLMの活用方法が分かり、<span class="tes-hl">セミナー資料作成時間が1/10になりました</span>。ここまで効率が上がるとは想像していませんでした。</p>
+                <div class="tes-author">
+                    <div class="tes-avatar">M</div>
+                    <div><div class="tes-name">Mさん・30代女性</div><div class="tes-role">CS（カスタマーサポート）</div></div>
+                </div>
+            </div>
+            <div class="tes-card fade">
+                <p class="tes-text">アプリ開発に苦手意識があったのに、<span class="tes-hl">初めて「作るのが楽しい」と感じました</span>。サポートのおかげで諦めずに続けられています。</p>
+                <div class="tes-author">
+                    <div class="tes-avatar">U</div>
+                    <div><div class="tes-name">Uさん・30代女性</div><div class="tes-role">Webディレクター</div></div>
+                </div>
+            </div>
+            <div class="tes-card fade">
+                <p class="tes-text">AIの使い方に迷いがなくなり、<span class="tes-hl">作業時間が1/3になりました</span>。本業の整体に集中できる時間が増えて、本当に助かっています。</p>
+                <div class="tes-author">
+                    <div class="tes-avatar">T</div>
+                    <div><div class="tes-name">Tさん・30代男性</div><div class="tes-role">整体師</div></div>
+                </div>
+            </div>
+            <div class="tes-card fade">
+                <p class="tes-text">確定申告をするうえで仕訳に自信がなかったのですが、<span class="tes-hl">伴走サポートのおかげでスムーズな申告ができました！</span>一人だったら絶対に諦めていたと思います。</p>
+                <div class="tes-author">
+                    <div class="tes-avatar">K</div>
+                    <div><div class="tes-name">Kさん・40代女性</div><div class="tes-role">Webディレクター</div></div>
+                </div>
+            </div>
+            <div class="tes-card fade">
+                <p class="tes-text">60代でついていけるか不安でしたが、<span class="tes-hl">丁寧な伴走のおかげでしっかりついていけています。</span>個別面談でその都度疑問を解消できるので、置いてかれることなく進められています。</p>
+                <div class="tes-author">
+                    <div class="tes-avatar">K</div>
+                    <div><div class="tes-name">Kさん・60代男性</div><div class="tes-role">シナリオライター</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec pricing">
+    <div class="container">
+        <div class="pricing-hd fade">
+            <span class="label">Pricing</span>
+            <h2 class="sec-title">料金プラン</h2>
+            <p class="sec-desc">まずはコミュニティプランから。個別サポートが必要な方は面談プランをお選びください。</p>
+        </div>
+
+        <!-- コミュニティ（強調） -->
+        <div class="community-plan fade">
+            <div class="community-plan__left">
+                <div class="community-plan__tag">ベースプラン</div>
+                <div class="community-plan__name">コミュニティ</div>
+                <div class="community-plan__price"><span>¥</span>5,500<small>/月</small></div>
+                <div class="community-plan__desc">AIを実務・収益に活かしたい方のための学習＆実践コミュニティ。まずはここからスタート。</div>
+                <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="margin-top:8px;">LINEから今すぐ参加する →</a>
+            </div>
+            <div class="community-plan__right">
+                <div class="community-plan__features-title">含まれる内容</div>
+                <div class="community-plan__features">
+                    <div class="cpf-item"><span class="cpf-icon">🎯</span><div><strong>月2回のグループコンサル</strong><br><small>AI活用・事業相談をみんなで解決</small></div></div>
+                    <div class="cpf-item"><span class="cpf-icon">📒</span><div><strong>仕訳会・交流会への参加</strong><br><small>不定期開催。経理の実践と仲間との交流</small></div></div>
+                    <div class="cpf-item"><span class="cpf-icon">⚡</span><div><strong>AI最新情報をキャッチ</strong><br><small>常に最前線の情報をコミュニティ内で共有</small></div></div>
+                    <div class="cpf-item"><span class="cpf-icon">💬</span><div><strong>AIに関する質問し放題</strong><br><small>Slackでいつでも気軽に相談できる環境</small></div></div>
+                    <div class="cpf-item"><span class="cpf-icon">🎬</span><div><strong>過去のアーカイブ視聴可能</strong><br><small>入会前の勉強会もすべて見放題</small></div></div>
+                    <div class="cpf-item"><span class="cpf-icon">🤝</span><div><strong>メンバー同士でAI活用共有・仕事受発注</strong><br><small>チームとして案件を生み出せる環境</small></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- プレミアムプラン -->
+        <div class="zoom-plan-label fade">
+            <span>プレミアムプラン（Zoomサポート付き）｜面談1回60分</span>
+        </div>
+        <div class="zoom-plan-grid fade">
+            <div class="plan-card">
+                <div class="plan-name">ライト</div>
+                <div class="plan-price"><span class="plan-yen">¥</span>12,500<span class="plan-unit">/月</span></div>
+                <div class="plan-desc">個別Zoom面談2回＋コミュニティ全機能</div>
+                <ul class="plan-features">
+                    <li>個別Zoom面談 <strong>2回</strong></li>
+                    <li>コミュニティ全機能含む</li>
+                    <li>AIコンサル（個別）</li>
+                    <li>AI活用方法（個別）</li>
+                    <li>経理サポート（個別）</li>
+                    <li>マーケティングコンサル（個別）</li>
+                </ul>
+            </div>
+
+            <div class="plan-card plan-card--popular">
+                <div class="plan-badge">おすすめ</div>
+                <div class="plan-name">スタンダード</div>
+                <div class="plan-price"><span class="plan-yen">¥</span>17,500<span class="plan-unit">/月</span></div>
+                <div class="plan-desc">個別Zoom面談4回＋コミュニティ全機能</div>
+                <ul class="plan-features">
+                    <li>個別Zoom面談 <strong>4回</strong></li>
+                    <li>コミュニティ全機能含む</li>
+                    <li>AIコンサル（個別）</li>
+                    <li>AI活用方法（個別）</li>
+                    <li>経理サポート（個別）</li>
+                    <li>マーケティングコンサル（個別）</li>
+                </ul>
+            </div>
+
+            <div class="plan-card">
+                <div class="plan-name">ベーシック</div>
+                <div class="plan-price"><span class="plan-yen">¥</span>16,000<span class="plan-unit">/月</span></div>
+                <div class="plan-desc">個別Zoom面談4回のみ<span style="color:#DC2626;font-weight:700;">（コミュニティなし）</span></div>
+                <ul class="plan-features">
+                    <li>個別Zoom面談 <strong>4回</strong></li>
+                    <li>AIコンサル（個別）</li>
+                    <li>AI活用方法（個別）</li>
+                    <li>経理サポート（個別）</li>
+                    <li>マーケティングコンサル（個別）</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 個別面談（単発） -->
+        <div class="tanpatsu-plan fade">
+            <div class="tanpatsu-plan__inner">
+                <div>
+                    <div class="tanpatsu-plan__name">個別面談（単発）</div>
+                    <div class="tanpatsu-plan__desc">まず1回だけ試したい方・スポットで相談したい方向け</div>
+                </div>
+                <div class="tanpatsu-plan__price">¥4,500<span>/回</span></div>
+            </div>
+        </div>
+
+        <p class="pricing-note fade">※ すべて単月から参加可能。いつでも解約できます。</p>
+    </div>
+</section>
+
+<!-- OFFER -->
+<section class="sec offer" id="offer">
+    <div class="container">
+        <div class="offer-hd fade">
+            <span class="label">Special Offer</span>
+            <h2 class="sec-title">入会特典と募集状況</h2>
+        </div>
+        <div class="offer-grid">
+            <div class="offer-benefits fade">
+                <h3>🎁 今だけの入会特典</h3>
+                <div class="benefit-row">
+                    <span class="mark">✦</span>
+                    <div><strong>根津式 SEO AIライティングプロンプト最新版</strong><small>すぐに実務で使えるプロンプトをプレゼント</small></div>
+                </div>
+                <div class="benefit-row">
+                    <span class="mark">✦</span>
+                    <div><strong>過去勉強会アーカイブ 見放題</strong><small>入会前の勉強会内容もすべて閲覧可能</small></div>
+                </div>
+                <div class="benefit-row">
+                    <span class="mark">✦</span>
+                    <div><strong>AI基礎講座（動画）視聴可能</strong><small>AIが初めての方でも安心してスタートできる</small></div>
+                </div>
+            </div>
+            <div class="offer-urgency fade">
+                <div class="urg-label">残り枠 わずか</div>
+                <h3 class="urg-title">定員<span>20名</span>の少人数制<br>現在<span>15名</span>在籍中</h3>
+                <div class="bar-labels"><span>0名</span><span>残り <strong style="color:var(--gold-light)">5名</strong></span><span>定員20名</span></div>
+                <div class="bar-track"><div class="bar-fill"></div></div>
+                <p class="bar-note">定員に達した時点で募集を終了します</p>
+                <div class="urg-ease">
+                    <div class="urg-ease-item">単月から参加可能</div>
+                    <div class="urg-ease-item">アーカイブ視聴ですぐに学習開始</div>
+                    <div class="urg-ease-item">少人数制で相談しやすい環境</div>
+                </div>
+            </div>
+        </div>
+        <div class="cta-box fade">
+            <h2>一緒に、AIを稼ぎに変えよう。</h2>
+            <p>AIを「触るだけ」で終わらせない。実務・収益・事業運営まで、チームで進む場所がここにあります。</p>
+            <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="btn btn-primary btn-lg">LINEから今すぐ参加する →</a>
+            <p class="cta-box-note">※申し込み後、詳細のご案内をお送りします</p>
+        </div>
+    </div>
+</section>
+
+<!-- STORY -->
+<section class="sec story">
+    <div class="container">
+        <div class="story-inner">
+            <div class="story-hd fade">
+                <span class="label">Our Story</span>
+                <h2 class="sec-title">なぜ、ライトザライトを<br>立ち上げたのか</h2>
+            </div>
+            <div class="story-body fade">
+                <p>AIを学んでも、<span class="em">「実務に活かせない」「収益に繋がらない」</span>人があまりにも多い。この課題を、現場で何度も目の当たりにしてきました。</p>
+                <p>情報は溢れているのに、一人では迷い続けてしまう。学んでも、どこで実践すればいいか分からない。孤独な学習はいつか途切れてしまう。</p>
+                <p>だからこそ必要なのは、知識だけではなく<span class="em">「伴走」と「実践の場」</span>だと確信しました。</p>
+                <p>そしてもう一つ。個人で戦う時代から、<span class="gd">チームで価値を提供する時代へ。</span></p>
+                <p>ライトザライトは、AIを学ぶだけの場ではなく、「事業者チーム」として活動するコミュニティです。一人で稼ぐだけでなく、チームとして仕事を生み出し、価値を届けていく。その環境を作るために、このコミュニティを立ち上げました。</p>
+            </div>
+            <div class="story-sig fade">
+                <div class="sig-avatar"><img src="profile.jpg" alt="根津仁志"></div>
+                <div>
+                    <div class="sig-name">根津 仁志（サスケ）</div>
+                    <div class="sig-role">ライトザライト 代表 / AIコンサル・講師・Webディレクター</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec faq" id="faq">
+    <div class="container">
+        <div class="faq-hd fade">
+            <span class="label">FAQ</span>
+            <h2 class="sec-title">ライトザライトに関する<br>よくある質問</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item fade">
+                <div class="faq-q"><div class="faq-q-inner"><span class="faq-mark">Q</span>AI初心者でも参加できますか？</div><span class="faq-arrow">▼</span></div>
+                <div class="faq-a"><span class="faq-mark a">A</span><div>はい、問題ありません。<br>過去のアーカイブでAIの基礎から学べるため、知識ゼロの状態からでも参加できます。また、面談付きプランでは個別サポートも受けられるため、初心者の方でも安心して進められます。</div></div>
+            </div>
+            <div class="faq-item fade">
+                <div class="faq-q"><div class="faq-q-inner"><span class="faq-mark">Q</span>会社員でも参加できますか？</div><span class="faq-arrow">▼</span></div>
+                <div class="faq-a"><span class="faq-mark a">A</span><div>はい、会社員の方も参加可能です。<br>副業としてAIを活用したい方や、将来的に独立を考えている方にも向いています。今すぐ独立していなくても問題ありません。</div></div>
+            </div>
+            <div class="faq-item fade">
+                <div class="faq-q"><div class="faq-q-inner"><span class="faq-mark">Q</span>どのくらいのレベルの人が参加していますか？</div><span class="faq-arrow">▼</span></div>
+                <div class="faq-a"><span class="faq-mark a">A</span><div>初心者から実務経験者まで幅広く参加しています。<br>現在は20代〜60代まで、Webライター、Webディレクター、CS、整体師などさまざまな職種の方が在籍しています。自分のレベルに合わせて学びやすい環境です。</div></div>
+            </div>
+            <div class="faq-item fade">
+                <div class="faq-q"><div class="faq-q-inner"><span class="faq-mark">Q</span>他のAIスクールやコミュニティとの違いは何ですか？</div><span class="faq-arrow">▼</span></div>
+                <div class="faq-a"><span class="faq-mark a">A</span><div>ライトザライトは、単なる学びの場ではなく「事業者チーム」として活動していく点が大きな違いです。<br>学ぶだけでなく、実践し、仕事の受発注や営業にもつなげていくことを目指しています。AI活用を収益化まで見据えているのが特徴です。</div></div>
+            </div>
+            <div class="faq-item fade">
+                <div class="faq-q"><div class="faq-q-inner"><span class="faq-mark">Q</span>本当に成果は出ますか？</div><span class="faq-arrow">▼</span></div>
+                <div class="faq-a"><span class="faq-mark a">A</span><div>成果には個人差がありますが、作業時間の短縮や実務力の向上を実感している方は多くいます。<br>実際に、記事作成が10時間から3時間に短縮した方や、資料作成時間が1/10になった方もいます。学ぶだけで終わらず、実践できる環境があることが強みです。</div></div>
+            </div>
+            <div class="faq-item fade">
+                <div class="faq-q"><div class="faq-q-inner"><span class="faq-mark">Q</span>忙しくてリアルタイムで参加できなくても大丈夫ですか？</div><span class="faq-arrow">▼</span></div>
+                <div class="faq-a"><span class="faq-mark a">A</span><div>はい、大丈夫です。<br>過去の勉強会や講座はアーカイブで視聴できるため、自分のペースで学べます。忙しい方でも継続しやすい環境を整えています。</div></div>
+            </div>
+            <div class="faq-item fade">
+                <div class="faq-q"><div class="faq-q-inner"><span class="faq-mark">Q</span>どんな人に向いていますか？</div><span class="faq-arrow">▼</span></div>
+                <div class="faq-a"><span class="faq-mark a">A</span><div>AIを実務や収益につなげたい方、一人では継続が難しい方、学ぶだけでなく仕事にもつなげたい方に向いています。<br>また、個人で頑張るだけでなく、チームとして価値提供していく働き方に興味がある方にもおすすめです。</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+    <h2>AIを、稼ぎに変える。</h2>
+    <p>ライトザライトで、「学ぶ → 実践する → 稼ぐ」を<br>チームで実現しませんか？</p>
+    <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="btn btn-white btn-lg">LINEから今すぐ参加する</a>
+    <p class="final-cta-note">定員20名｜残り5名｜単月から参加可能</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="f-logo">Light<span>the</span>Light</div>
+    <p>© 2026 ライトザライト All rights reserved.</p>
+</footer>
+
+<script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Fade-in on scroll
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('on'), i * 70);
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+            const item = q.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+</script>
+</body>
+</html>
