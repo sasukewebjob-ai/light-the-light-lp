@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FAF7F2">
     <title>ライトザライト | AI活用×個人事業主コミュニティ</title>
     <meta name="description" content="AI活用を軸に「実務」「収益化」「事業運営」まで一気通貫でサポートする事業者チーム。学ぶ→実践する→稼ぐを、チームで完結。">
     <link rel="canonical" href="https://sasukewebjob-ai.github.io/light-the-light-lp/">
@@ -13,13 +14,13 @@
     <meta property="og:url" content="https://sasukewebjob-ai.github.io/light-the-light-lp/">
     <meta property="og:title" content="ライトザライト | AI活用×個人事業主コミュニティ">
     <meta property="og:description" content="AIは学んだ。でも、仕事には繋がっていない――そんな方のための「事業者チーム」。学ぶ→実践→稼ぐをチームで完結。">
-    <meta property="og:image" content="https://sasukewebjob-ai.github.io/light-the-light-lp/seminar1.png">
+    <meta property="og:image" content="https://sasukewebjob-ai.github.io/light-the-light-lp/seminar1.jpg">
     <meta property="og:locale" content="ja_JP">
     <meta property="og:site_name" content="ライトザライト">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ライトザライト | AI活用×個人事業主コミュニティ">
     <meta name="twitter:description" content="AIは学んだ。でも、仕事には繋がっていない――そんな方のための「事業者チーム」。">
-    <meta name="twitter:image" content="https://sasukewebjob-ai.github.io/light-the-light-lp/seminar1.png">
+    <meta name="twitter:image" content="https://sasukewebjob-ai.github.io/light-the-light-lp/seminar1.jpg">
 
     <!-- Google Analytics 4 (TODO: GA4 測定IDを取得して GA_MEASUREMENT_ID を置き換え。GTMやMicrosoft Clarityも別途検討) -->
     <!--
@@ -402,8 +403,9 @@
         }
         @media (max-width: 640px) {
             .hero { padding: 120px 20px 80px; }
-            .hero-stats { grid-template-columns: 1fr; gap: 24px; padding-top: 32px; margin-top: 56px; }
-            .hero-stat + .hero-stat::before { display: none; }
+            .hero-stats { padding-top: 32px; margin-top: 48px; }
+            .hero-stat { padding: 0 8px; }
+            .hero-stat-lbl { font-size: 10px; letter-spacing: .04em; }
         }
 
         /* ════════════════════════════════════════
@@ -1410,17 +1412,9 @@
             .community-plan__left, .community-plan__right { padding: 36px 28px; }
             .community-plan__right { border-left: none; border-top: 1px solid rgba(255,255,255,.08); }
             .zoom-plan-grid {
-                display: flex; flex-wrap: nowrap;
-                overflow-x: auto;
-                gap: 14px;
-                padding: 16px 4px 12px;
-                scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-            }
-            .zoom-plan-grid .plan-card {
-                min-width: 80vw;
-                scroll-snap-align: start;
-                flex-shrink: 0;
+                grid-template-columns: 1fr;
+                gap: 18px;
+                padding: 8px 0 4px;
             }
             .tanpatsu-plan__price { margin-left: 0; }
         }
@@ -2174,19 +2168,19 @@
         </div>
         <div class="act-grid">
             <div class="act-item fade">
-                <img src="seminar1.png" alt="プロンプト筋トレ勉強会">
+                <img src="seminar1.jpg" alt="プロンプト筋トレ勉強会" loading="lazy" decoding="async">
                 <div class="act-caption">プロンプト筋トレ ／ 自分でプロンプトを作れるワーク</div>
             </div>
             <div class="act-item fade">
-                <img src="seminar2.png" alt="GAS×AI実践講座">
+                <img src="seminar2.jpg" alt="GAS×AI実践講座" loading="lazy" decoding="async">
                 <div class="act-caption">GAS × AI 実践講座 ／ 業務自動化ワーク</div>
             </div>
             <div class="act-item fade">
-                <img src="seminar3.png" alt="AI活用事例共有会">
+                <img src="seminar3.jpg" alt="AI活用事例共有会" loading="lazy" decoding="async">
                 <div class="act-caption">AI活用事例の共有会 ／ メンバーの実践報告</div>
             </div>
             <div class="act-item fade">
-                <img src="seminar4.png" alt="アプリ開発実践">
+                <img src="seminar4.jpg" alt="アプリ開発実践" loading="lazy" decoding="async">
                 <div class="act-caption">アプリ開発実践 ／ ゼロからコードを作る体験</div>
             </div>
         </div>
@@ -2203,7 +2197,7 @@
         <div class="proof-grid">
             <div class="profile-card fade">
                 <div class="profile-top">
-                    <div class="profile-avatar"><img src="profile.jpg" alt="根津仁志"></div>
+                    <div class="profile-avatar"><img src="profile.jpg" alt="根津仁志" loading="lazy" decoding="async"></div>
                     <div>
                         <div class="profile-name">根津 仁志（サスケ）</div>
                         <div class="profile-role">AIコンサル・講師・Webディレクター</div>
@@ -2513,7 +2507,7 @@
                 <p>そしてもう一つ。個人で戦う時代から、<span class="gd">チームで価値を提供する時代へ。</span></p>
             </div>
             <div class="story-sig fade">
-                <div class="sig-avatar"><img src="profile.jpg" alt="根津仁志"></div>
+                <div class="sig-avatar"><img src="profile.jpg" alt="根津仁志" loading="lazy" decoding="async"></div>
                 <div>
                     <div class="sig-name">根津 仁志（サスケ）</div>
                     <div class="sig-role">ライトザライト 代表 / AIコンサル・講師・Webディレクター</div>

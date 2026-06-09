@@ -12,11 +12,13 @@
 ```
 LP作成/
 ├── index.html       ← LP本体
-├── profile.jpg      ← 根津さんのプロフィール写真
-├── seminar1.png     ← プロンプト筋トレ勉強会
-├── seminar2.png     ← GAS×AI実践講座
-├── seminar3.png     ← AI活用事例共有会
-├── seminar4.png     ← アプリ開発実践
+├── profile.jpg      ← 根津さんのプロフィール写真（480px圧縮済）
+├── seminar1.jpg     ← プロンプト筋トレ勉強会（1200px圧縮済）
+├── seminar2.jpg     ← GAS×AI実践講座
+├── seminar3.jpg     ← AI活用事例共有会
+├── seminar4.jpg     ← アプリ開発実践
+├── originals/       ← 圧縮前の原本画像（git管理外）
+├── screenshots/     ← 検証用スクショ（git管理外）
 └── CLAUDE.md        ← このファイル
 ```
 
