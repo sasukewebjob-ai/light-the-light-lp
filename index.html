@@ -227,6 +227,18 @@
         .fade { opacity: 0; transform: translateY(12px); transition: opacity .8s ease, transform .8s ease; }
         .fade.on { opacity: 1; transform: translateY(0); }
 
+        /* ===== Mid CTA ===== */
+        .mid-cta { text-align: center; margin-top: 64px; }
+        .mid-cta-note {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 14px;
+        }
+        @media (max-width: 640px) {
+            .mid-cta { margin-top: 48px; }
+            .mid-cta .btn { width: 100%; max-width: 360px; }
+        }
+
         /* ===== SVG Icons ===== */
         .p-icon svg, .sol-point-icon svg, .srv-icon svg, .cpf-icon svg,
         .usecase-icon svg, .benefit-row .mark svg { display: block; }
@@ -1924,7 +1936,7 @@
 <nav class="nav" id="nav">
     <div class="nav-inner">
         <div class="nav-logo">Light<span>the</span>Light</div>
-        <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="nav-cta">残り5名｜LINEから参加</a>
+        <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="nav-cta">残り5名｜詳細はLINEで</a>
     </div>
 </nav>
 
@@ -2065,6 +2077,13 @@
                     <div class="ba-item"><span class="ba-mark"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>事業運営の不安がなくなる</div>
                 </div>
             </div>
+        </div>
+        <div class="mid-cta fade">
+            <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+                LINEで詳細を受け取る（30秒）
+                <span class="btn-arrow">→</span>
+            </a>
+            <p class="mid-cta-note">※登録後、詳細案内が届きます。決済はありません。</p>
         </div>
     </div>
 </section>
@@ -2270,6 +2289,13 @@
                 </div>
             </div>
         </div>
+        <div class="mid-cta fade">
+            <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+                LINEで詳細を受け取る（30秒）
+                <span class="btn-arrow">→</span>
+            </a>
+            <p class="mid-cta-note">※定員20名・残り5名。登録後に詳細案内が届きます。</p>
+        </div>
     </div>
 </section>
 
@@ -2306,7 +2332,7 @@
                 <div class="community-plan__price"><span class="yen">¥</span>5,500<span class="unit">/月</span></div>
                 <div class="community-plan__desc">AIを実務・収益に活かしたい方のための学習＆実践コミュニティ。まずはここからスタート。</div>
                 <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="btn btn-primary btn-lg community-plan__cta">
-                    LINEから今すぐ参加する
+                    LINEで詳細を受け取る（30秒）
                     <span class="btn-arrow">→</span>
                 </a>
             </div>
@@ -2536,7 +2562,7 @@
         <h2>AIを、稼ぎに変える。</h2>
         <p>ライトザライトで、「学ぶ → 実践する → 稼ぐ」を<br>チームで実現しませんか？</p>
         <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="btn btn-final">
-            LINEから今すぐ参加する
+            LINEで詳細を受け取る（30秒）
             <span class="btn-arrow">→</span>
         </a>
         <p class="final-cta-note">定員20名｜残り5名｜単月から参加可能</p>
@@ -2544,7 +2570,7 @@
 </section>
 
 <!-- FLOATING CTA (Mobile) -->
-<a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="floating-cta" id="floatingCta" aria-label="LINEで参加する">
+<a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="floating-cta" id="floatingCta" aria-label="LINEで詳細を受け取る">
     <div class="floating-cta__urg">残り5名｜定員間近</div>
     <div class="floating-cta__main">LINEで詳細を受け取る <span class="floating-cta__arrow">→</span></div>
 </a>
