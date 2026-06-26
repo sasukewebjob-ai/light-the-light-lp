@@ -99,6 +99,7 @@
             font-family: var(--f-sans);
             color: var(--text-body);
             background: var(--bg-canvas);
+            overflow-x: hidden;
             line-height: 1.75;
             font-weight: 400;
             font-feature-settings: "palt" 1;
@@ -288,8 +289,14 @@
         }
         .nav-cta:hover { background: var(--green-deep); transform: translateY(-1px); }
         @media (max-width: 768px) {
-            .nav-inner { padding: 0 20px; height: 64px; }
-            .nav-cta { font-size: 12px; padding: 8px 16px; }
+            .nav-inner { padding: 0 16px; height: 60px; gap: 10px; }
+            .nav-logo { font-size: 15px; gap: 8px; flex-shrink: 0; white-space: nowrap; }
+            .nav-logo img { height: 30px; }
+            .nav-cta { font-size: 11px; padding: 8px 12px; white-space: nowrap; flex-shrink: 0; }
+            /* 長文CTAボタンを全幅化してはみ出し防止 */
+            .btn-lg { font-size: 15px; padding: 16px 22px; }
+            .community-plan__cta, .btn-final { width: 100%; }
+            .hero-ctas .btn { width: 100%; max-width: 360px; }
         }
 
         /* ════════════════════════════════════════
@@ -1440,7 +1447,7 @@
 
         @media (max-width: 900px) {
             .community-plan { grid-template-columns: 1fr; }
-            .community-plan__left, .community-plan__right { padding: 36px 28px; }
+            .community-plan__left, .community-plan__right { padding: 36px 28px; min-width: 0; }
             .community-plan__right { border-left: none; border-top: 1px solid rgba(255,255,255,.08); }
             .zoom-plan-grid {
                 grid-template-columns: 1fr;
