@@ -12,6 +12,11 @@
 ```
 LP作成/
 ├── index.html       ← LP本体
+├── logo.png         ← 全体ロゴ（Team Light the Light・透過）Hero用
+├── logo-mark.png    ← コンパスマークのみ（透過）ナビ・フッター用
+├── favicon.ico      ← マークのfavicon（16/32/48/64）
+├── favicon-64.png   ← PNG版favicon
+├── apple-touch-icon.png ← Apple用アイコン（180）
 ├── profile.jpg      ← 根津さんのプロフィール写真（480px圧縮済）
 ├── seminar1.jpg     ← プロンプト筋トレ勉強会（1200px圧縮済）
 ├── seminar2.jpg     ← GAS×AI実践講座

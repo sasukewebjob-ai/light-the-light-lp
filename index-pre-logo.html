@@ -7,9 +7,7 @@
     <title>ライトザライト | AI活用×個人事業主コミュニティ</title>
     <meta name="description" content="AI活用を軸に「実務」「収益化」「事業運営」まで一気通貫でサポートする事業者チーム。学ぶ→実践する→稼ぐを、チームで完結。">
     <link rel="canonical" href="https://sasukewebjob-ai.github.io/light-the-light-lp/">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
-    <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231A1A1A'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' fill='%23D4B785' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
 
     <!-- OGP / Twitter Card -->
     <meta property="og:type" content="website">
@@ -270,14 +268,12 @@
             max-width: 1100px; margin: 0 auto; padding: 0 32px;
         }
         .nav-logo {
-            display: inline-flex; align-items: center; gap: 10px;
             font-family: var(--f-serif);
-            font-size: 19px; font-weight: 600;
+            font-size: 20px; font-weight: 600;
             color: var(--text-primary);
             letter-spacing: -.01em;
         }
-        .nav-logo img { height: 38px; width: auto; display: block; }
-        .nav-logo i { color: var(--gold); font-style: italic; font-weight: 500; margin: 0 .12em; }
+        .nav-logo span { color: var(--gold); font-style: italic; font-weight: 500; }
         .nav-cta {
             background: var(--green);
             color: #fff;
@@ -313,7 +309,6 @@
             pointer-events: none;
         }
         .hero-inner { position: relative; max-width: 880px; }
-        .hero-logo { width: 148px; height: auto; margin: 0 auto 30px; display: block; }
         .hero-pill {
             display: inline-flex; align-items: center; gap: 10px;
             background: var(--bg-surface);
@@ -420,7 +415,6 @@
         }
         @media (max-width: 640px) {
             .hero { padding: 120px 20px 80px; }
-            .hero-logo { width: 116px; margin-bottom: 22px; }
             .hero-stats { padding-top: 32px; margin-top: 48px; }
             .hero-stat { padding: 0 8px; }
             .hero-stat-lbl { font-size: 10px; letter-spacing: .04em; }
@@ -1926,16 +1920,14 @@
             letter-spacing: .04em;
         }
         footer .f-logo {
-            display: inline-flex; align-items: center; gap: 9px;
             font-family: var(--f-serif);
             font-weight: 500;
             font-size: 16px;
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             letter-spacing: -.01em;
         }
-        footer .f-logo img { height: 34px; width: auto; display: block; }
-        footer .f-logo i { color: var(--gold-soft); font-style: italic; margin: 0 .12em; }
+        footer .f-logo span { color: var(--gold-soft); font-style: italic; }
     </style>
 </head>
 <body>
@@ -1943,7 +1935,7 @@
 <!-- NAV -->
 <nav class="nav" id="nav">
     <div class="nav-inner">
-        <div class="nav-logo"><img src="logo-mark.png" alt="Team Light the Light"><span>Light<i>the</i>Light</span></div>
+        <div class="nav-logo">Light<span>the</span>Light</div>
         <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="nav-cta">残り5名｜詳細はLINEで</a>
     </div>
 </nav>
@@ -1951,7 +1943,6 @@
 <!-- HERO -->
 <section class="hero">
     <div class="hero-inner">
-        <img src="logo.png" alt="Team Light the Light" class="hero-logo">
         <div class="hero-pill">
             <span class="hero-pill-dot"></span>
             AI活用 × 個人事業主コミュニティ
@@ -2586,7 +2577,7 @@
 
 <!-- FOOTER -->
 <footer>
-    <div class="f-logo"><img src="logo-mark.png" alt="Team Light the Light"><span>Light<i>the</i>Light</span></div>
+    <div class="f-logo">Light<span>the</span>Light</div>
     <p>© 2026 ライトザライト All rights reserved.</p>
 </footer>
 
