@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#FAF7F2">
-    <title>ライトザライト | 学べる・稼げる・仲間ができる AI事業者チーム</title>
-    <meta name="description" content="日本はAI人材が全然足りていない――だから、チャンス。「学べる」「稼げる」「仲間ができる」の3つが揃った、個人事業主・副業者のためのAIコミュニティ「ライトザライト」。">
+    <title>ライトザライト | AI活用×個人事業主コミュニティ</title>
+    <meta name="description" content="AI活用を軸に「実務」「収益化」「事業運営」まで一気通貫でサポートする事業者チーム。学ぶ→実践する→稼ぐを、チームで完結。">
     <link rel="canonical" href="https://sasukewebjob-ai.github.io/light-the-light-lp/">
     <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
     <link rel="icon" href="favicon.ico" sizes="any">
@@ -14,15 +14,26 @@
     <!-- OGP / Twitter Card -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sasukewebjob-ai.github.io/light-the-light-lp/">
-    <meta property="og:title" content="ライトザライト | 学べる・稼げる・仲間ができる AI事業者チーム">
-    <meta property="og:description" content="日本はAI人材が、全然足りていない。だからこそ、学んだ人からチャンスを掴める。学べる・稼げる・仲間ができる「事業者チーム」ライトザライト。">
+    <meta property="og:title" content="ライトザライト | AI活用×個人事業主コミュニティ">
+    <meta property="og:description" content="AIは学んだ。でも、仕事には繋がっていない――そんな方のための「事業者チーム」。学ぶ→実践→稼ぐをチームで完結。">
     <meta property="og:image" content="https://sasukewebjob-ai.github.io/light-the-light-lp/seminar1.jpg">
     <meta property="og:locale" content="ja_JP">
     <meta property="og:site_name" content="ライトザライト">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ライトザライト | 学べる・稼げる・仲間ができる AI事業者チーム">
-    <meta name="twitter:description" content="日本はAI人材が、全然足りていない。だからこそ、学んだ人からチャンスを掴める「事業者チーム」。">
+    <meta name="twitter:title" content="ライトザライト | AI活用×個人事業主コミュニティ">
+    <meta name="twitter:description" content="AIは学んだ。でも、仕事には繋がっていない――そんな方のための「事業者チーム」。">
     <meta name="twitter:image" content="https://sasukewebjob-ai.github.io/light-the-light-lp/seminar1.jpg">
+
+    <!-- Google Analytics 4 (TODO: GA4 測定IDを取得して GA_MEASUREMENT_ID を置き換え。GTMやMicrosoft Clarityも別途検討) -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -429,30 +440,6 @@
             .hero-stat-lbl { font-size: 10px; letter-spacing: .04em; }
         }
 
-        /* ===== Hero pillars (3本柱予告) ===== */
-        .hero-pillars {
-            display: flex; justify-content: center; flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .hero-pillar {
-            display: inline-flex; align-items: center; gap: 8px;
-            font-family: var(--f-serif);
-            font-weight: 500; font-size: 15px;
-            color: var(--gold-deep);
-            background: var(--gold-bg);
-            border: 1px solid var(--gold-soft);
-            border-radius: 100px;
-            padding: 8px 20px;
-        }
-        .hero-pillar::before {
-            content: ''; width: 6px; height: 6px;
-            border-radius: 50%; background: var(--gold);
-        }
-        @media (max-width: 640px) {
-            .hero-pillar { font-size: 13px; padding: 7px 14px; }
-        }
-
         /* ════════════════════════════════════════
            PROBLEM (dark canvas, refined)
         ════════════════════════════════════════ */
@@ -519,85 +506,9 @@
             margin-bottom: 10px;
         }
         .problem-bridge small {
-            display: block;
             font-size: 14px;
             color: rgba(255,255,255,.6);
             line-height: 1.8;
-        }
-
-        /* ===== Reality (日本の現状) ===== */
-        .problem .num-grid { margin-bottom: 40px; }
-        .problem .num-card {
-            background: rgba(255,255,255,.04);
-            border: 1px solid rgba(255,255,255,.09);
-        }
-        .jp-callout {
-            text-align: center;
-            padding: 44px 32px;
-            background: rgba(255,255,255,.03);
-            border: 1px solid rgba(255,255,255,.1);
-            border-radius: var(--r-lg);
-            margin-bottom: 56px;
-        }
-        .jp-callout-main {
-            font-family: var(--f-serif);
-            font-weight: 500;
-            font-size: clamp(19px, 2.4vw, 24px);
-            line-height: 1.7;
-            color: #fff;
-            margin-bottom: 16px;
-        }
-        .jp-callout-main em {
-            font-style: normal;
-            color: var(--gold-soft);
-        }
-        .jp-callout-sub {
-            font-size: 14px;
-            color: rgba(255,255,255,.65);
-            line-height: 1.9;
-            max-width: 600px;
-            margin: 0 auto 24px;
-        }
-        .jp-callout-punch {
-            font-family: var(--f-serif);
-            font-weight: 600;
-            font-size: clamp(20px, 2.6vw, 26px);
-            color: var(--gold-soft);
-        }
-        .jp-you { max-width: 560px; margin: 0 auto 40px; }
-        .jp-you-q {
-            text-align: center;
-            font-family: var(--f-serif);
-            font-size: 18px; font-weight: 500;
-            color: rgba(255,255,255,.88);
-            margin-bottom: 20px;
-        }
-        .jp-check { display: flex; flex-direction: column; gap: 12px; }
-        .jp-check-item {
-            display: flex; align-items: center; gap: 14px;
-            background: rgba(255,255,255,.03);
-            border: 1px solid rgba(255,255,255,.08);
-            border-radius: var(--r-md);
-            padding: 16px 20px;
-            font-size: 15px;
-            color: rgba(255,255,255,.84);
-            line-height: 1.6;
-        }
-        .jp-box {
-            width: 18px; height: 18px; min-width: 18px;
-            border: 1.5px solid var(--gold-soft);
-            border-radius: 4px;
-        }
-        .jp-source {
-            margin-top: 28px;
-            font-size: 11px;
-            color: rgba(255,255,255,.35);
-            text-align: center;
-            line-height: 1.7;
-        }
-        @media (max-width: 640px) {
-            .jp-callout { padding: 32px 20px; }
-            .jp-callout-sub br { display: none; }
         }
 
         /* ════════════════════════════════════════
@@ -704,50 +615,6 @@
             .sol-concept { padding: 40px 24px; }
             .sol-flow { padding: 8px; gap: 0; }
             .flow-step { font-size: 13px; padding: 8px 12px; }
-        }
-
-        /* ===== Pillars (3本柱) ===== */
-        .pillar-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 16px;
-        }
-        .pillar {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--r-lg);
-            padding: 40px 28px;
-            text-align: center;
-            transition: all .3s ease;
-        }
-        .pillar:hover {
-            transform: translateY(-3px);
-            border-color: var(--gold-soft);
-            box-shadow: var(--sh-soft);
-        }
-        .pillar-num {
-            font-family: var(--f-serif);
-            font-size: 13px;
-            letter-spacing: .14em;
-            color: var(--gold);
-            margin-bottom: 12px;
-        }
-        .pillar-title {
-            display: inline-block;
-            font-family: var(--f-serif);
-            font-weight: 600;
-            font-size: 26px;
-            margin-bottom: 14px;
-            background: var(--gold-grad);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .pillar-copy {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.85;
-            text-align: left;
         }
 
         /* ════════════════════════════════════════
@@ -1295,50 +1162,6 @@
             }
             .anchor-compare__arr { transform: rotate(90deg); }
             .anchor-compare__val { font-size: 20px; }
-        }
-
-        /* 使い分けガイド */
-        .plan-guide {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 48px;
-        }
-        .plan-guide-col {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-default);
-            border-radius: var(--r-lg);
-            padding: 28px;
-        }
-        .plan-guide-col--premium {
-            border-color: var(--gold-soft);
-            background: var(--bg-elevated);
-        }
-        .plan-guide-tag {
-            display: inline-block;
-            font-size: 12px; font-weight: 600;
-            letter-spacing: .06em;
-            color: var(--gold-deep);
-            background: var(--gold-bg);
-            border-radius: 100px;
-            padding: 4px 14px;
-            margin-bottom: 14px;
-        }
-        .plan-guide-col p {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-        .plan-guide-col p strong {
-            display: block;
-            font-family: var(--f-serif);
-            font-weight: 500;
-            font-size: 17px;
-            color: var(--text-primary);
-            margin-bottom: 6px;
-        }
-        @media (max-width: 700px) {
-            .plan-guide { grid-template-columns: 1fr; }
         }
 
         /* コミュニティ強調カード */
@@ -2148,17 +1971,12 @@
             AI活用 × 個人事業主コミュニティ
         </div>
         <h1 class="hero-title">
-            日本はAI人材が、<br><span class="accent">全然足りていない。</span>
+            AIは学んだ。でも、<br><span class="accent">仕事には繋がっていない。</span>
         </h1>
         <p class="hero-sub">
-            「AIに触れてはいるけど、仕事には繋がっていない」――<br>実はその状態、いちばんチャンスに近い場所です。
+            学んで終わらせない。<br>チームで実践し、収益まで届ける。
         </p>
-        <div class="hero-pillars">
-            <span class="hero-pillar">学べる</span>
-            <span class="hero-pillar">稼げる</span>
-            <span class="hero-pillar">仲間ができる</span>
-        </div>
-        <p class="hero-concept">AI人材になって、チームで活動する ― ライトザライト</p>
+        <p class="hero-concept">個人事業主・副業者のための「事業者チーム」 ― ライトザライト</p>
         <p class="cta-urg">＼ 定員あとわずか ／</p>
         <div class="hero-ctas">
             <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
@@ -2188,49 +2006,25 @@
     </div>
 </section>
 
-<!-- REALITY (日本の現状 → あなたの現在地) -->
+<!-- PROBLEM -->
 <section class="sec problem">
     <div class="container">
         <div class="sec-head center fade">
-            <span class="eyebrow center">Reality</span>
-            <h2 class="h-1">いまの日本、<br>実はこんな状況です</h2>
-            <p class="lead center">あまり知られていないだけで、データははっきり示しています。</p>
+            <span class="eyebrow center">Problem</span>
+            <h2 class="h-1">こんなお悩み、ありませんか？</h2>
+            <p class="lead center">AIに興味はあるのに、なかなか成果に繋がらない方へ</p>
         </div>
-        <div class="num-grid fade">
-            <div class="num-card">
-                <span class="num-from">中小企業の</span>
-                <span class="num-val">約59%</span>
-                <span class="num-lbl">が、AI「導入予定なし」<br>（大企業でも25%が未定）</span>
-            </div>
-            <div class="num-card">
-                <span class="num-from">導入しない理由 第1位</span>
-                <span class="num-val">55.1%</span>
-                <span class="num-lbl">「専門人材がいない」<br>― 使える人が、足りていない</span>
-            </div>
-            <div class="num-card">
-                <span class="num-from">それでもAI市場は</span>
-                <span class="num-val">約3.7倍</span>
-                <span class="num-lbl">5年で6,859億円 → 2兆5,434億円へ<br>急拡大の予測</span>
-            </div>
-        </div>
-        <div class="jp-callout fade">
-            <p class="jp-callout-main">企業は「AIを使える人」を探しています。<br>そして、求められるレベルは<em>決して高くない。</em></p>
-            <p class="jp-callout-sub">議事録の要約、メール文の作成、チャットボット（GPTs）、画像生成、HP制作……<br>この程度で、もう十分「AI人材」として成り立つのが今の日本です。</p>
-            <p class="jp-callout-punch">だから――あなたの出番です。</p>
-        </div>
-        <div class="jp-you fade">
-            <p class="jp-you-q">では、あなた自身はどうでしょう？</p>
-            <div class="jp-check">
-                <div class="jp-check-item"><span class="jp-box"></span>AIは触っている。でも、収益には繋がっていない</div>
-                <div class="jp-check-item"><span class="jp-box"></span>何から学べばいいか、正直わからない</div>
-                <div class="jp-check-item"><span class="jp-box"></span>一人だと、続かない</div>
-            </div>
+        <div class="problem-grid">
+            <div class="p-item fade"><div class="p-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg></div><p class="p-text">AIを触っているのに、成果に繋がらない</p></div>
+            <div class="p-item fade"><div class="p-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><p class="p-text">作業に時間がかかりすぎる</p></div>
+            <div class="p-item fade"><div class="p-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><p class="p-text">何から学べばいいか分からない</p></div>
+            <div class="p-item fade"><div class="p-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><p class="p-text">情報が多すぎて、何が正しいか判断できない</p></div>
+            <div class="p-item fade"><div class="p-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><p class="p-text">一人だと継続できない</p></div>
+            <div class="p-item fade"><div class="p-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg></div><p class="p-text">経理・税務・経営の知識がなく、事業運営に不安がある</p></div>
         </div>
         <div class="problem-bridge fade">
-            <p>あなたは出遅れているのではなく、「あと一歩」の場所にいる。</p>
-            <small>その一歩を、一人で踏み出す必要はありません。</small>
+            <p>その悩み、一人で抱えなくていい。</p>
         </div>
-        <p class="jp-source fade">出典：総務省 令和6年版 情報通信白書（AI市場規模）／帝国データバンク 2026年3月調査／日本経済新聞 3,000人調査 2026年4月</p>
     </div>
 </section>
 
@@ -2240,7 +2034,6 @@
         <div class="sec-head center fade">
             <span class="eyebrow center">What is LighttheLight</span>
             <h2 class="h-1">ライトザライトとは</h2>
-            <p class="lead center">「繋がらない」「わからない」「続かない」――3つの悩みに、3つの答えを。</p>
         </div>
         <div class="sol-concept fade">
             <div class="sol-concept-inner">
@@ -2254,21 +2047,26 @@
                 </div>
             </div>
         </div>
-        <div class="pillar-grid">
-            <div class="pillar fade">
-                <div class="pillar-num">01</div>
-                <h4 class="pillar-title">学べる</h4>
-                <p class="pillar-copy">毎月の勉強会＋過去アーカイブ見放題＋Slackで質問し放題。AIの基礎から経理・税務まで、もう「何から学べばいいか」で迷わない。</p>
+        <div class="sol-points">
+            <div class="sol-point fade">
+                <span class="sol-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></span>
+                <h4>AI実務スキルの習得</h4>
+                <p>プロンプト設計からアプリ開発まで、実務直結で習得</p>
             </div>
-            <div class="pillar fade">
-                <div class="pillar-num">02</div>
-                <h4 class="pillar-title">稼げる</h4>
-                <p class="pillar-copy">コミュニティ内で仕事の受発注が生まれる。個人では難しい案件もチームで受注し、AIコンサルとしての活動まで目指せる。</p>
+            <div class="sol-point fade">
+                <span class="sol-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
+                <h4>チームでの案件獲得</h4>
+                <p>個人では難しい案件もチームで受注できる実践の場</p>
             </div>
-            <div class="pillar fade">
-                <div class="pillar-num">03</div>
-                <h4 class="pillar-title">仲間ができる</h4>
-                <p class="pillar-copy">定員20名の少人数制。いつでも相談できる仲間と、交流会・仕訳会で繋がれる。一人じゃないから、続く。</p>
+            <div class="sol-point fade">
+                <span class="sol-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+                <h4>事業運営の知識</h4>
+                <p>経理・税務・経営の基礎まで、事業者に必要な知識を習得</p>
+            </div>
+            <div class="sol-point fade">
+                <span class="sol-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></span>
+                <h4>継続できる環境</h4>
+                <p>Slackでいつでも相談できる。一人で迷わない環境がある</p>
             </div>
         </div>
     </div>
@@ -2285,20 +2083,22 @@
             <div class="ba-col before">
                 <div class="ba-head">Before</div>
                 <div class="ba-body">
-                    <div class="ba-item"><span class="ba-mark">×</span>AIを触るだけで、仕事に繋がらない</div>
-                    <div class="ba-item"><span class="ba-mark">×</span>学ぶ順番も、進め方も手探り</div>
-                    <div class="ba-item"><span class="ba-mark">×</span>一人きりで、モチベーションが続かない</div>
-                    <div class="ba-item"><span class="ba-mark">×</span>経理・税務など事業運営が不安</div>
+                    <div class="ba-item"><span class="ba-mark">×</span>AIを触っているだけ、成果が出ない</div>
+                    <div class="ba-item"><span class="ba-mark">×</span>作業に時間がかかりすぎる</div>
+                    <div class="ba-item"><span class="ba-mark">×</span>何をすべきか迷い続ける</div>
+                    <div class="ba-item"><span class="ba-mark">×</span>一人では継続できない</div>
+                    <div class="ba-item"><span class="ba-mark">×</span>収益・経営に不安がある</div>
                 </div>
             </div>
             <div class="ba-arr">→</div>
             <div class="ba-col after">
                 <div class="ba-head">After</div>
                 <div class="ba-body">
-                    <div class="ba-item"><span class="ba-mark"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>AIを「収益に直結する形」で使える</div>
-                    <div class="ba-item"><span class="ba-mark"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>やるべきことが明確になり、作業時間も大幅短縮</div>
+                    <div class="ba-item"><span class="ba-mark"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>AIを「成果に直結する形」で使える</div>
+                    <div class="ba-item"><span class="ba-mark"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>作業時間が大幅に短縮される</div>
+                    <div class="ba-item"><span class="ba-mark"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>やるべきことが明確になる</div>
                     <div class="ba-item"><span class="ba-mark"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>チームの中で仕事の機会が生まれる</div>
-                    <div class="ba-item"><span class="ba-mark"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>経理・税務まで相談できる安心感</div>
+                    <div class="ba-item"><span class="ba-mark"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>事業運営の不安がなくなる</div>
                 </div>
             </div>
         </div>
@@ -2529,19 +2329,7 @@
         <div class="sec-head center fade">
             <span class="eyebrow center">Pricing</span>
             <h2 class="h-1">料金プラン</h2>
-            <p class="lead center">¥5,500で「自分で学ぶ」。面談付きで「伴走してもらう」。あなたに合う関わり方を選べます。</p>
-        </div>
-
-        <!-- 使い分けガイド -->
-        <div class="plan-guide fade">
-            <div class="plan-guide-col">
-                <div class="plan-guide-tag">コミュニティ ¥5,500/月</div>
-                <p><strong>自分で学んで、追いつく</strong>過去のアーカイブを見ながら実際にAIを触って学び、毎月の勉強会に追いついていくスタイル。</p>
-            </div>
-            <div class="plan-guide-col plan-guide-col--premium">
-                <div class="plan-guide-tag">面談付きプラン</div>
-                <p><strong>伴走してもらって、最短で進む</strong>アーカイブの内容から、いまのAIの使い方、さらにAIコンサルとしての活動サポートまで個別に伴走。</p>
-            </div>
+            <p class="lead center">まずはコミュニティプランから。個別サポートが必要な方は面談プランをお選びください。</p>
         </div>
 
         <!-- コミュニティ強調カード -->
@@ -2550,7 +2338,7 @@
                 <div class="community-plan__tag">Base Plan</div>
                 <div class="community-plan__name">コミュニティ</div>
                 <div class="community-plan__price"><span class="yen">¥</span>5,500<span class="unit">/月</span></div>
-                <div class="community-plan__desc">過去のアーカイブで実際にAIを触りながら学び、毎月の勉強会に追いついていく。自分のペースで「AI人材」を目指すベースプラン。</div>
+                <div class="community-plan__desc">AIを実務・収益に活かしたい方のための学習＆実践コミュニティ。まずはここからスタート。</div>
                 <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="btn btn-primary btn-lg community-plan__cta">
                     LINEで詳細を受け取る（30秒）
                     <span class="btn-arrow">→</span>
@@ -2589,7 +2377,7 @@
         <div class="zoom-plan-label fade">
             <span>プレミアムプラン（Zoomサポート付き）｜面談1回60分</span>
         </div>
-        <p class="zoom-plan-menu fade">面談では、アーカイブの内容から「いまのAIの使い方」、AIコンサルとしての活動サポートまで伴走します<br>（AIコンサル／AI活用方法／PC操作サポート／経理サポート／マーケティングコンサル）</p>
+        <p class="zoom-plan-menu fade">面談内容は全プラン共通：AIコンサル／AI活用方法／PC操作サポート／経理サポート／マーケティングコンサル</p>
         <div class="zoom-plan-grid fade">
             <div class="plan-card">
                 <div class="plan-name">ライト</div>
@@ -2757,16 +2545,12 @@
                 <div class="faq-a"><span class="faq-mark a">A</span><div>LINE登録後、ご質問やご希望をお伺いした上で、コミュニティの詳細をご案内します。<br>ご入会の意思が固まった段階でお手続きへ進み、Slackへご招待。すぐに特典やアーカイブを利用できる状態になります。LINE登録の段階では決済は発生しません。</div></div>
             </div>
             <div class="faq-item fade">
-                <div class="faq-q"><div class="faq-q-inner"><span class="faq-mark">Q</span>コミュニティ（¥5,500）と面談付きプランの違いは？</div><span class="faq-arrow">▼</span></div>
-                <div class="faq-a"><span class="faq-mark a">A</span><div>コミュニティは、過去のアーカイブを見ながら実際にAIを触って学び、毎月の勉強会に追いついていく「自走型」のプランです。<br>面談付きプランは、それに加えてアーカイブの内容・いまのAIの使い方・さらにAIコンサルとしての活動サポートまで、個別Zoomで伴走します。迷ったらコミュニティから始めて、必要になったら面談を追加するのがおすすめです。</div></div>
-            </div>
-            <div class="faq-item fade">
                 <div class="faq-q"><div class="faq-q-inner"><span class="faq-mark">Q</span>Slackは何に使うのですか？</div><span class="faq-arrow">▼</span></div>
                 <div class="faq-a"><span class="faq-mark a">A</span><div>メンバー間のコミュニケーション基盤として利用します。<br>AIに関する質問・実践報告・最新情報の共有・案件相談など、コミュニティの活動はすべてSlack上で行われます。普段Slackを使ったことがない方でも、招待後に使い方をご案内しますのでご安心ください。</div></div>
             </div>
             <div class="faq-item fade">
                 <div class="faq-q"><div class="faq-q-inner"><span class="faq-mark">Q</span>料金は他社と比べて高くないですか？</div><span class="faq-arrow">▼</span></div>
-                <div class="faq-a"><span class="faq-mark a">A</span><div>一般的なAIスクールの受講料は20万〜80万円程度、個別AIコンサルの相場は1回¥15,000〜¥30,000です。ライトザライトはコミュニティが月¥5,500・単月参加OK、スタンダードプランでも面談1回あたり実質¥3,500（コミュニティ込）と、比較にならない低リスクで始められます。<br>さらに、月2回のグループコンサル・Slackでの質問し放題・アーカイブ視聴・チーム内受発注の機会まで含まれるため、コスト対効果は高いと自負しています。</div></div>
+                <div class="faq-a"><span class="faq-mark a">A</span><div>個別AIコンサルの一般相場が1回¥15,000〜¥30,000であることを踏まえると、ライトザライトのスタンダードプランは面談1回あたり実質¥3,500（コミュニティ込）と、相場の1/4以下です。<br>さらに、月2回のグループコンサル・Slackでの質問し放題・アーカイブ視聴・チーム内受発注の機会まで含まれるため、コスト対効果は高いと自負しています。すべて単月から参加可能です。</div></div>
             </div>
             <div class="faq-item fade">
                 <div class="faq-q"><div class="faq-q-inner"><span class="faq-mark">Q</span>AI初心者でも参加できますか？</div><span class="faq-arrow">▼</span></div>
@@ -2799,8 +2583,8 @@
 <!-- FINAL CTA -->
 <section class="final-cta">
     <div class="final-cta-inner">
-        <h2>AIを学べば、すべてが変わり始める。</h2>
-        <p>学べる・稼げる・仲間ができる。<br>ライトザライトで、「AI人材」としての一歩を踏み出しませんか？</p>
+        <h2>AIを、稼ぎに変える。</h2>
+        <p>ライトザライトで、「学ぶ → 実践する → 稼ぐ」を<br>チームで実現しませんか？</p>
         <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="btn btn-final">
             LINEで詳細を受け取る（30秒）
             <span class="btn-arrow">→</span>
