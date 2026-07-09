@@ -83,7 +83,7 @@
             --f-sans:  'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
         }
 
-        html { scroll-behavior: smooth; overflow-x: hidden; overflow-x: clip; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--f-sans);
             color: var(--text-body);
@@ -214,47 +214,10 @@
         .btn:hover .btn-arrow { transform: translateX(3px); }
 
         /* ════════════════════════════════════════
-           FADE ANIMATION (directional)
+           FADE ANIMATION (subtle)
         ════════════════════════════════════════ */
-        .fade {
-            opacity: 0;
-            transform: translateY(40px);
-            will-change: opacity, transform;
-        }
-        /* body付きでカード側の transition: all .3s より優先させる（表示後はJSがfadeクラスを外すのでhoverは元に戻る） */
-        body .fade { transition: opacity .7s cubic-bezier(.16, 1, .3, 1), transform .7s cubic-bezier(.16, 1, .3, 1); }
-        .fade-l { transform: translateX(-56px); }
-        .fade-r { transform: translateX(56px); }
-        .fade-zoom { transform: scale(.92) translateY(16px); }
-        .fade.on { opacity: 1; transform: none; }
-        /* stagger: 親に .stagger を付けると子の .fade がJSで順に登場（transition-delayを付与） */
-
-        /* Hero：ページ表示時に上から順にシュッと登場 */
-        @keyframes heroIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: none; }
-        }
-        .hero-inner > * { animation: heroIn .8s cubic-bezier(.16, 1, .3, 1) both; }
-        .hero-inner > *:nth-child(1) { animation-delay: .05s; }
-        .hero-inner > *:nth-child(2) { animation-delay: .13s; }
-        .hero-inner > *:nth-child(3) { animation-delay: .21s; }
-        .hero-inner > *:nth-child(4) { animation-delay: .29s; }
-        .hero-inner > *:nth-child(5) { animation-delay: .37s; }
-        .hero-inner > *:nth-child(6) { animation-delay: .45s; }
-        .hero-inner > *:nth-child(7) { animation-delay: .53s; }
-        .hero-inner > *:nth-child(8) { animation-delay: .61s; }
-        .hero-inner > *:nth-child(9) { animation-delay: .69s; }
-        .hero-inner > *:nth-child(10) { animation-delay: .77s; }
-        .hero-inner > *:nth-child(11) { animation-delay: .85s; }
-
-        @media (prefers-reduced-motion: reduce) {
-            .fade, .fade-l, .fade-r, .fade-zoom {
-                opacity: 1;
-                transform: none;
-                transition: none;
-            }
-            .hero-inner > * { animation: none; }
-        }
+        .fade { opacity: 0; transform: translateY(12px); transition: opacity .8s ease, transform .8s ease; }
+        .fade.on { opacity: 1; transform: translateY(0); }
 
         /* ===== Mid CTA ===== */
         .mid-cta { text-align: center; margin-top: 64px; }
@@ -2233,29 +2196,29 @@
             <h2 class="h-1">いまの日本、<br>実はこんな状況です</h2>
             <p class="lead center">数字を見ると、意外な事実が見えてきます。</p>
         </div>
-        <div class="num-grid stagger">
-            <div class="num-card fade">
+        <div class="num-grid fade">
+            <div class="num-card">
                 <span class="num-from">中小企業の</span>
                 <span class="num-val">約59%</span>
                 <span class="num-lbl">が、AI「導入予定なし」<br>（大企業でも25%が未定）</span>
             </div>
-            <div class="num-card fade">
+            <div class="num-card">
                 <span class="num-from">導入しない理由 第1位</span>
                 <span class="num-val">55.1%</span>
                 <span class="num-lbl">「専門人材がいない」<br>― 使える人が、足りていない</span>
             </div>
-            <div class="num-card fade">
+            <div class="num-card">
                 <span class="num-from">それでもAI市場は</span>
                 <span class="num-val">約3.7倍</span>
                 <span class="num-lbl">5年で6,859億円 → 2兆5,434億円へ<br>急拡大の予測</span>
             </div>
         </div>
-        <div class="jp-callout fade fade-zoom">
+        <div class="jp-callout fade">
             <p class="jp-callout-main">企業は「AIを使える人」を探している。<br>しかも、求められるレベルは<em>決して高くない。</em></p>
             <p class="jp-callout-sub">議事録の要約、メール文の作成、チャットボット（GPTs）、画像生成、HP制作……<br>この程度で、もう十分「AI人材」として成り立つのが、いまの日本です。</p>
             <p class="jp-callout-punch">だから――あなたの出番です。</p>
         </div>
-        <div class="jp-you fade fade-l">
+        <div class="jp-you fade">
             <p class="jp-you-q">では、あなた自身はどうでしょう？</p>
             <div class="jp-check">
                 <div class="jp-check-item"><span class="jp-box"></span>AIは触っている。でも、収益には繋がっていない</div>
@@ -2263,7 +2226,7 @@
                 <div class="jp-check-item"><span class="jp-box"></span>一人だと、続かない</div>
             </div>
         </div>
-        <div class="problem-bridge fade fade-zoom">
+        <div class="problem-bridge fade">
             <p>あなたは出遅れているのではなく、「あと一歩」の場所にいる。</p>
             <small>その一歩を、一人で踏み出す必要はありません。</small>
         </div>
@@ -2279,7 +2242,7 @@
             <h2 class="h-1">ライトザライトとは</h2>
             <p class="lead center">「繋がらない」「わからない」「続かない」。3つの悩みに、3つの答えを用意しました。</p>
         </div>
-        <div class="sol-concept fade fade-zoom">
+        <div class="sol-concept fade">
             <div class="sol-concept-inner">
                 <h3>単なる勉強会ではない。<br><em>「事業者チーム」</em>として活動するコミュニティ。</h3>
                 <div class="sol-flow">
@@ -2291,7 +2254,7 @@
                 </div>
             </div>
         </div>
-        <div class="pillar-grid stagger">
+        <div class="pillar-grid">
             <div class="pillar fade">
                 <div class="pillar-num">01</div>
                 <h4 class="pillar-title">学べる</h4>
@@ -2318,8 +2281,8 @@
             <span class="eyebrow center">Before / After</span>
             <h2 class="h-1">入会後の変化</h2>
         </div>
-        <div class="ba-wrap stagger">
-            <div class="ba-col before fade fade-l">
+        <div class="ba-wrap fade">
+            <div class="ba-col before">
                 <div class="ba-head">Before</div>
                 <div class="ba-body">
                     <div class="ba-item"><span class="ba-mark">×</span>AIを触るだけで、仕事に繋がらない</div>
@@ -2329,7 +2292,7 @@
                 </div>
             </div>
             <div class="ba-arr">→</div>
-            <div class="ba-col after fade fade-r">
+            <div class="ba-col after">
                 <div class="ba-head">After</div>
                 <div class="ba-body">
                     <div class="ba-item"><span class="ba-mark"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>AIを「収益に直結する形」で使える</div>
@@ -2357,7 +2320,7 @@
             <h2 class="h-1">提供サービス</h2>
             <p class="lead center">あなたの「学べる・稼げる・仲間ができる」を、この6つで支えます。</p>
         </div>
-        <div class="srv-grid stagger">
+        <div class="srv-grid">
             <div class="srv-card fade">
                 <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
                 <h3>グループコンサル</h3>
@@ -2400,25 +2363,25 @@
             <h2 class="h-1">こんな業種の方が成果を出しています</h2>
         </div>
         <div class="usecase-grid">
-            <div class="usecase-card fade fade-l">
+            <div class="usecase-card fade">
                 <div class="usecase-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
                 <div class="usecase-role">Webライター</div>
                 <div class="usecase-result">記事作成 <strong>10時間 → 3時間</strong></div>
                 <p class="usecase-desc">AIライティングを業務フローに組込み、リサーチ〜執筆〜推敲までを1/3の時間で完結。</p>
             </div>
-            <div class="usecase-card fade fade-r">
+            <div class="usecase-card fade">
                 <div class="usecase-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
                 <div class="usecase-role">広報・PR / CS</div>
                 <div class="usecase-result">資料作成 <strong>従来の1/10</strong></div>
                 <p class="usecase-desc">NotebookLM等を活用し、社内資料・セミナー資料の作成スピードを劇的に短縮。</p>
             </div>
-            <div class="usecase-card fade fade-l">
+            <div class="usecase-card fade">
                 <div class="usecase-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.51 4.04 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg></div>
                 <div class="usecase-role">整体師・店舗系</div>
                 <div class="usecase-result">業務時間 <strong>1/3に短縮</strong></div>
                 <p class="usecase-desc">予約管理・記録・配信文作成にAIを導入。本業（接客・施術）に集中できる時間が増加。</p>
             </div>
-            <div class="usecase-card fade fade-r">
+            <div class="usecase-card fade">
                 <div class="usecase-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
                 <div class="usecase-role">Webディレクター</div>
                 <div class="usecase-result">アプリ開発を<strong>"楽しい"に</strong></div>
@@ -2436,20 +2399,20 @@
             <span class="eyebrow center">Activity</span>
             <h2 class="h-1">活動の様子</h2>
         </div>
-        <div class="act-grid stagger">
-            <div class="act-item fade fade-zoom">
+        <div class="act-grid">
+            <div class="act-item fade">
                 <img src="seminar1.jpg" alt="プロンプト筋トレ勉強会" loading="lazy" decoding="async">
                 <div class="act-caption">プロンプト筋トレ ／ 自分でプロンプトを作れるワーク</div>
             </div>
-            <div class="act-item fade fade-zoom">
+            <div class="act-item fade">
                 <img src="seminar2.jpg" alt="GAS×AI実践講座" loading="lazy" decoding="async">
                 <div class="act-caption">GAS × AI 実践講座 ／ 業務自動化ワーク</div>
             </div>
-            <div class="act-item fade fade-zoom">
+            <div class="act-item fade">
                 <img src="seminar3.jpg" alt="AI活用事例共有会" loading="lazy" decoding="async">
                 <div class="act-caption">AI活用事例の共有会 ／ メンバーの実践報告</div>
             </div>
-            <div class="act-item fade fade-zoom">
+            <div class="act-item fade">
                 <img src="seminar4.jpg" alt="アプリ開発実践" loading="lazy" decoding="async">
                 <div class="act-caption">アプリ開発実践 ／ ゼロからコードを作る体験</div>
             </div>
@@ -2465,7 +2428,7 @@
             <h2 class="h-1">信頼と実績</h2>
         </div>
         <div class="proof-grid">
-            <div class="profile-card fade fade-l">
+            <div class="profile-card fade">
                 <div class="profile-top">
                     <div class="profile-avatar"><img src="profile.jpg" alt="根津仁志" loading="lazy" decoding="async"></div>
                     <div>
@@ -2480,7 +2443,7 @@
                     <div class="profile-item">経営者としての実務経験あり</div>
                 </div>
             </div>
-            <div class="proof-stats fade fade-r">
+            <div class="proof-stats fade">
                 <div class="stat-blk">
                     <span class="stat-blk-num">14名在籍</span>
                     <span class="stat-blk-lbl">定員20名の少人数制コミュニティ</span>
@@ -2508,7 +2471,7 @@
             <span class="eyebrow center">Testimonials</span>
             <h2 class="h-1">メンバーの声</h2>
         </div>
-        <div class="tes-grid stagger">
+        <div class="tes-grid">
             <div class="tes-card fade">
                 <p class="tes-text">AIライティングを導入したことで、<span class="tes-hl">10時間かかっていた作業が3時間に短縮</span>できました。こんなに変わるとは思っていませんでした。</p>
                 <div class="tes-author">
@@ -2584,7 +2547,7 @@
         </div>
 
         <!-- コミュニティ強調カード -->
-        <div class="community-plan fade fade-zoom">
+        <div class="community-plan fade">
             <div class="community-plan__left">
                 <div class="community-plan__tag">Base Plan</div>
                 <div class="community-plan__name">コミュニティ</div>
@@ -2629,8 +2592,8 @@
             <span>プレミアムプラン（Zoomサポート付き）｜面談1回60分</span>
         </div>
         <p class="zoom-plan-menu fade">面談では、アーカイブの内容から「いまのAIの使い方」、AIコンサルとしての活動サポートまで伴走します<br>（AIコンサル／AI活用方法／PC操作サポート／経理サポート／マーケティングコンサル）</p>
-        <div class="zoom-plan-grid stagger">
-            <div class="plan-card fade">
+        <div class="zoom-plan-grid fade">
+            <div class="plan-card">
                 <div class="plan-name">ライト</div>
                 <div class="plan-price"><span class="plan-yen">¥</span>13,500<span class="plan-unit">/月</span></div>
                 <div class="plan-per-session">面談1回あたり実質 <strong>¥4,000</strong></div>
@@ -2641,7 +2604,7 @@
                 </ul>
             </div>
 
-            <div class="plan-card plan-card--popular fade">
+            <div class="plan-card plan-card--popular">
                 <div class="plan-badge">おすすめ</div>
                 <div class="plan-name">スタンダード</div>
                 <div class="plan-price"><span class="plan-yen">¥</span>19,500<span class="plan-unit">/月</span></div>
@@ -2653,7 +2616,7 @@
                 </ul>
             </div>
 
-            <div class="plan-card fade">
+            <div class="plan-card">
                 <div class="plan-name">ベーシック</div>
                 <div class="plan-price"><span class="plan-yen">¥</span>18,000<span class="plan-unit">/月</span></div>
                 <div class="plan-per-session">面談1回あたり <strong>¥4,500</strong></div>
@@ -2688,26 +2651,26 @@
             <h2 class="h-1">入会後はどうなる？最初の流れ</h2>
             <p class="lead center">登録から実践までは数日。迷わず進められる設計です。</p>
         </div>
-        <div class="roadmap-flow stagger">
-            <div class="roadmap-step fade fade-l">
+        <div class="roadmap-flow">
+            <div class="roadmap-step fade">
                 <div class="roadmap-step__num">01</div>
                 <div class="roadmap-step__day">Day 1</div>
                 <div class="roadmap-step__title">LINE登録 → 詳細案内</div>
                 <p class="roadmap-step__desc">LINEから案内が届き、内容や疑問にお答えします。決済はこの段階ではありません。</p>
             </div>
-            <div class="roadmap-step fade fade-l">
+            <div class="roadmap-step fade">
                 <div class="roadmap-step__num">02</div>
                 <div class="roadmap-step__day">入会後</div>
                 <div class="roadmap-step__title">Slack招待＆特典受取</div>
                 <p class="roadmap-step__desc">コミュニティのSlackに招待。SEOプロンプト・基礎講座動画・過去アーカイブをすぐに利用可能。</p>
             </div>
-            <div class="roadmap-step fade fade-l">
+            <div class="roadmap-step fade">
                 <div class="roadmap-step__num">03</div>
                 <div class="roadmap-step__day">Week 1〜</div>
                 <div class="roadmap-step__title">グループコンサルに参加</div>
                 <p class="roadmap-step__desc">月2回のZoomグループコンサルで他メンバーの事例を吸収。質問はSlackでいつでも。</p>
             </div>
-            <div class="roadmap-step fade fade-l">
+            <div class="roadmap-step fade">
                 <div class="roadmap-step__num">04</div>
                 <div class="roadmap-step__day">Month 1〜</div>
                 <div class="roadmap-step__title">実践→収益化フェーズ</div>
@@ -2726,7 +2689,7 @@
             <p class="lead center">いま参加を決めたあなたが、最速でスタートできる特典を用意しています。</p>
         </div>
         <div class="offer-grid">
-            <div class="offer-benefits fade fade-l">
+            <div class="offer-benefits fade">
                 <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>いまだけの入会特典</h3>
                 <div class="benefit-row">
                     <span class="mark"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
@@ -2741,7 +2704,7 @@
                     <div><strong>AI基礎講座（動画）視聴可能</strong><small>AIが初めての方でも安心してスタートできる</small></div>
                 </div>
             </div>
-            <div class="offer-urgency fade fade-r">
+            <div class="offer-urgency fade">
                 <div class="urg-content">
                     <div class="urg-label">残り枠 わずか</div>
                     <h3 class="urg-title">定員<em>20名</em>の少人数制<br>現在<em>14名</em>在籍中</h3>
@@ -2868,24 +2831,12 @@
         nav.classList.toggle('scrolled', window.scrollY > 30);
     }, { passive: true });
 
-    // Fade-in on scroll（.stagger の子は時間差で登場）
-    document.querySelectorAll('.stagger').forEach(group => {
-        [...group.children].filter(c => c.classList.contains('fade'))
-            .forEach((c, i) => { c.style.transitionDelay = (i * 0.13) + 's'; });
-    });
-
+    // Fade-in on scroll
     const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
+        entries.forEach((entry, i) => {
             if (entry.isIntersecting) {
-                const el = entry.target;
-                el.classList.add('on');
-                io.unobserve(el);
-                // 登場後はfade関連を外し、カード本来のhoverトランジションに戻す
-                setTimeout(() => {
-                    el.classList.remove('fade', 'fade-l', 'fade-r', 'fade-zoom', 'on');
-                    el.style.transitionDelay = '';
-                    el.style.willChange = '';
-                }, 1800);
+                setTimeout(() => entry.target.classList.add('on'), i * 60);
+                io.unobserve(entry.target);
             }
         });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
