@@ -1151,12 +1151,34 @@
             box-shadow: var(--sh-soft);
             transform: translateY(-2px);
         }
-        .win-who {
-            font-size: 13px;
+        .win-head {
+            display: flex; align-items: center; gap: 11px;
+            margin-bottom: 12px;
+        }
+        .win-avatar {
+            width: 34px; height: 34px; min-width: 34px;
+            border-radius: 50%;
+            display: inline-flex; align-items: center; justify-content: center;
+            background: var(--gold-bg);
+            border: 1px solid var(--gold-soft);
+            color: var(--gold-deep);
+            font-family: var(--f-serif);
             font-weight: 600;
+            font-size: 15px;
+        }
+        .win-who {
+            display: flex; flex-direction: column;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: .02em;
+            line-height: 1.35;
+        }
+        .win-who small {
+            font-size: 12px;
+            font-weight: 500;
             color: var(--text-muted);
-            letter-spacing: .04em;
-            margin-bottom: 10px;
+            letter-spacing: .02em;
         }
         .win-result {
             font-family: var(--f-serif);
@@ -2392,6 +2414,7 @@
             .tes-role,
             .roadmap-step__desc,
             .roadmap-step__title,
+            .win-who small,
             .urg-ease-item,
             .bar-note,
             .bar-updated,
@@ -2608,19 +2631,19 @@
         <h3 class="sub-head sub-head--first fade">仕事につながった実例</h3>
         <div class="win-grid stagger">
             <div class="win-card fade fade-l">
-                <div class="win-who">パート・主婦（広報PR）</div>
+                <div class="win-head"><span class="win-avatar">K</span><span class="win-who">Kさん<small>広報・PR ／ 主婦</small></span></div>
                 <div class="win-result">在宅の副業で<strong>時給3,000円</strong>のAI案件を獲得</div>
             </div>
             <div class="win-card fade fade-r">
-                <div class="win-who">会社員（メーカー勤務）</div>
+                <div class="win-head"><span class="win-avatar">M</span><span class="win-who">Mさん<small>会社員 ／ メーカー勤務</small></span></div>
                 <div class="win-result">本業で<strong>AI研修を担当するポジション</strong>に就任</div>
             </div>
             <div class="win-card fade fade-l">
-                <div class="win-who">地方在住メンバー</div>
+                <div class="win-head"><span class="win-avatar">S</span><span class="win-who">Sさん<small>地方在住 ／ ブログ・AI活用支援</small></span></div>
                 <div class="win-result">自治体のマッチング事業で<strong>地元企業のAI活用メンバーにジョイン</strong></div>
             </div>
             <div class="win-card fade fade-r">
-                <div class="win-who">経理・バックオフィス</div>
+                <div class="win-head"><span class="win-avatar">Y</span><span class="win-who">Yさん<small>経理・バックオフィス</small></span></div>
                 <div class="win-result">中小企業への業務効率化提案で<strong>作業時間を1/10にカット</strong></div>
             </div>
         </div>
