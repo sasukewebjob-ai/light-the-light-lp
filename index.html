@@ -1068,68 +1068,15 @@
         }
 
         /* ════════════════════════════════════════
-           USE CASES
+           RESULTS（成果事例セクション）
         ════════════════════════════════════════ */
         .usecases { background: var(--bg-canvas); }
-        .usecase-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-top: 8px;
-        }
-        .usecase-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--r-md);
-            padding: 28px 22px;
-            transition: all .25s ease;
-        }
-        .usecase-card:hover {
-            border-color: var(--border-default);
-            box-shadow: var(--sh-soft);
-            transform: translateY(-2px);
-        }
-        .usecase-icon { font-size: 28px; margin-bottom: 12px; }
-        .usecase-role {
-            font-size: 11px;
-            color: var(--text-muted);
-            letter-spacing: .08em;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        .usecase-result {
-            font-family: var(--f-serif);
-            font-size: 16px;
-            color: var(--text-primary);
-            line-height: 1.5;
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-        .usecase-result strong {
-            color: var(--gold-deep);
-            font-weight: 700;
-        }
-        .usecase-desc {
-            font-size: 12px;
-            color: var(--text-body);
-            line-height: 1.7;
-        }
         .usecase-note {
             text-align: center;
-            font-size: 12px;
-            color: var(--text-faint);
-            margin-top: 32px;
-        }
-        @media (max-width: 900px) {
-            .usecase-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 480px) {
-            .usecase-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .usecase-card { padding: 18px 15px; }
-            .usecase-icon { margin-bottom: 8px; }
-            .usecase-result { font-size: 15px; margin-bottom: 8px; }
-            .usecase-desc { font-size: 13px; line-height: 1.65; }
-            .usecase-role { font-size: 12px; }
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-top: 28px;
         }
 
         /* ===== 仕事につながった実例（win cards） ===== */
@@ -2391,9 +2338,9 @@
             .num-from,
             .jp-source,
             .jp-callout-sub,
-            .usecase-desc,
+
             .usecase-note,
-            .usecase-role,
+
             .mid-cta-note,
             .pricing-note,
             .plan-desc,
@@ -2649,35 +2596,6 @@
         </div>
         <p class="usecase-note fade">※ 在籍メンバーの実例です。成果には個人差があり、同じ結果を保証するものではありません。</p>
 
-        <h3 class="sub-head fade">業種別の時短効果</h3>
-        <div class="usecase-grid">
-            <div class="usecase-card fade fade-l">
-                <div class="usecase-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-                <div class="usecase-role">Webライター</div>
-                <div class="usecase-result">記事作成 <strong>10時間 → 3時間</strong></div>
-                <p class="usecase-desc">AIライティングを業務フローに組込み、リサーチ〜執筆〜推敲までを1/3の時間で完結。</p>
-            </div>
-            <div class="usecase-card fade fade-r">
-                <div class="usecase-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
-                <div class="usecase-role">広報・PR / CS</div>
-                <div class="usecase-result">資料作成 <strong>従来の1/10</strong></div>
-                <p class="usecase-desc">NotebookLM等を活用し、社内資料・セミナー資料の作成スピードを劇的に短縮。</p>
-            </div>
-            <div class="usecase-card fade fade-l">
-                <div class="usecase-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.51 4.04 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg></div>
-                <div class="usecase-role">整体師・店舗系</div>
-                <div class="usecase-result">業務時間 <strong>1/3に短縮</strong></div>
-                <p class="usecase-desc">予約管理・記録・配信文作成にAIを導入。本業（接客・施術）に集中できる時間が増加。</p>
-            </div>
-            <div class="usecase-card fade fade-r">
-                <div class="usecase-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-                <div class="usecase-role">Webディレクター</div>
-                <div class="usecase-result">アプリ開発を<strong>"楽しい"に</strong></div>
-                <p class="usecase-desc">非エンジニアでも、AIサポートでツール開発が可能に。クライアント提案の幅も広がる。</p>
-            </div>
-        </div>
-        <p class="usecase-note fade">※ あなたの業種にも、効率化できる業務がきっと見つかります。</p>
-
         <h3 class="sub-head fade">メンバーの声</h3>
         <div class="tes-grid stagger">
             <div class="tes-card fade">
@@ -2728,6 +2646,7 @@
                 </div>
             </div>
         </details>
+        <p class="usecase-note fade">※ 20代〜60代・Webライター／広報PR／整体師／Webディレクターなど、業種も年代もさまざまです。<br>あなたの業種にも、効率化できる業務がきっと見つかります。</p>
 
         <div class="mid-cta fade">
             <a href="https://lin.ee/Y7OfHPe" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-cta="mid-results">
