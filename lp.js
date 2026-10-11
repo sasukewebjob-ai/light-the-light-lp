@@ -3,6 +3,73 @@
   'use strict';
   document.documentElement.classList.add('js');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const storage = (fn) => { try { return fn(window.sessionStorage); } catch (e) { return null; } };
+
+  // Opening: first visit in this tab only, about two seconds, skippable. Off with ?opening=off or reduced motion.
+  const opening = document.getElementById('opening');
+  if (opening) {
+    const off = new URLSearchParams(window.location.search).get('opening') === 'off';
+    const seen = storage(s => s.getItem('ltl-opening'));
+    if (!off && !seen && !reduceMotion.matches) {
+      storage(s => s.setItem('ltl-opening', '1'));
+      opening.hidden = false;
+      document.documentElement.classList.add('is-opening');
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        opening.classList.add('is-leaving');
+        document.documentElement.classList.remove('is-opening');
+        window.setTimeout(() => { opening.hidden = true; }, 800);
+        window.removeEventListener('keydown', finish);
+      };
+      window.setTimeout(finish, 2300);
+      opening.addEventListener('click', finish);
+      window.addEventListener('keydown', finish);
+    }
+  }
+
+  // Hero lights: a few warm motes drifting up through the lamplight (paused off-screen and when motion is reduced).
+  const canvas = document.getElementById('heroLights');
+  if (canvas && canvas.getContext) {
+    const ctx = canvas.getContext('2d');
+    let points = [], width = 0, height = 0, running = false, frame = 0;
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      width = rect.width; height = rect.height;
+      canvas.width = Math.round(width * ratio); canvas.height = Math.round(height * ratio);
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      const count = Math.min(30, Math.round(width * height / 42000));
+      points = Array.from({ length: count }, () => ({
+        x: Math.random() * width, y: Math.random() * height,
+        r: 0.6 + Math.random() * 1.8, vy: -(0.05 + Math.random() * 0.18), vx: (Math.random() - 0.5) * 0.08,
+        phase: Math.random() * Math.PI * 2
+      }));
+    }
+    function draw(t) {
+      ctx.clearRect(0, 0, width, height);
+      points.forEach(p => {
+        const glow = 0.55 + 0.45 * Math.sin(t / 900 + p.phase);
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 7);
+        g.addColorStop(0, `rgba(255,226,150,${0.85 * glow})`); g.addColorStop(1, 'rgba(242,193,78,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 7, 0, Math.PI * 2); ctx.fill();
+      });
+    }
+    function step(t) {
+      if (!running) return;
+      points.forEach(p => { p.x += p.vx; p.y += p.vy; if (p.y < -10) { p.y = height + 10; p.x = Math.random() * width; } });
+      draw(t);
+      frame = window.requestAnimationFrame(step);
+    }
+    const start = () => { if (!running && !reduceMotion.matches && !document.hidden) { running = true; frame = window.requestAnimationFrame(step); } };
+    const stop = () => { running = false; window.cancelAnimationFrame(frame); };
+    resize(); draw(0);
+    window.addEventListener('resize', () => { resize(); draw(0); }, { passive: true });
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+    if ('IntersectionObserver' in window) new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop())).observe(canvas);
+    else start();
+  }
 
   // Group-session tabs: click or arrow/Home/End keyboard navigation.
   const tabs = [...document.querySelectorAll('[data-step]')];
@@ -18,7 +85,7 @@
   }
   if (tabList && tabs.length === panels.length) {
     tabList.setAttribute('role', 'tablist');
-    const narrowTabs = window.matchMedia('(max-width: 850px)');
+    const narrowTabs = window.matchMedia('(max-width: 860px)');
     const updateOrientation = () => tabList.setAttribute('aria-orientation', narrowTabs.matches ? 'horizontal' : 'vertical');
     updateOrientation();
     narrowTabs.addEventListener('change', updateOrientation);
@@ -41,6 +108,47 @@
     selectStep(0);
   }
 
+  // Study-session gallery: swipe/scroll natively; buttons and theme chips move the same track.
+  const track = document.getElementById('sessionTrack');
+  if (track) {
+    const items = [...track.querySelectorAll('.session-head, .shot')];
+    const chips = [...document.querySelectorAll('[data-session-link]')];
+    const prev = document.getElementById('sessionPrev');
+    const next = document.getElementById('sessionNext');
+    const edge = () => parseFloat(getComputedStyle(track).scrollPaddingLeft) || 0;
+    const behavior = () => (reduceMotion.matches ? 'auto' : 'smooth');
+    const goTo = el => track.scrollTo({ left: el.offsetLeft - edge(), behavior: behavior() });
+    const current = () => {
+      const x = track.scrollLeft + 4;
+      let index = 0;
+      items.forEach((el, i) => { if (el.offsetLeft - edge() <= x) index = i; });
+      return index;
+    };
+    prev?.addEventListener('click', () => goTo(items[Math.max(0, current() - 1)]));
+    next?.addEventListener('click', () => goTo(items[Math.min(items.length - 1, current() + 1)]));
+    chips.forEach(chip => chip.addEventListener('click', event => {
+      const head = document.getElementById('session-' + chip.dataset.sessionLink)?.querySelector('.session-head');
+      if (!head) return;
+      event.preventDefault();
+      goTo(head);
+    }));
+    let queuedTrack = false;
+    const syncTrack = () => {
+      queuedTrack = false;
+      const max = track.scrollWidth - track.clientWidth - 2;
+      if (prev) prev.disabled = track.scrollLeft <= 2;
+      if (next) next.disabled = track.scrollLeft >= max;
+      const group = items[current()]?.closest('.session');
+      chips.forEach(chip => {
+        if (group && chip.dataset.sessionLink === group.dataset.session) chip.setAttribute('aria-current', 'true');
+        else chip.removeAttribute('aria-current');
+      });
+    };
+    track.addEventListener('scroll', () => { if (!queuedTrack) { queuedTrack = true; window.requestAnimationFrame(syncTrack); } }, { passive: true });
+    window.addEventListener('resize', syncTrack, { passive: true });
+    syncTrack();
+  }
+
   // Answers stay readable without JS; closed panels are also removed from tab order.
   document.querySelectorAll('.faq-question').forEach(button => {
     const panel = document.getElementById(button.getAttribute('aria-controls'));
@@ -54,7 +162,7 @@
     button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
   });
 
-  // A single animation frame updates orientation and the small-screen CTA.
+  // A single animation frame updates the header, progress, current section and the small-screen CTA.
   const header = document.getElementById('header');
   const progress = document.getElementById('readingProgress');
   const hero = document.querySelector('.hero');
@@ -68,7 +176,13 @@
     const y = window.scrollY;
     const max = document.documentElement.scrollHeight - window.innerHeight;
     if (progress) progress.style.transform = `scaleX(${max > 0 ? Math.min(1, Math.max(0, y / max)) : 0})`;
-    if (header) header.classList.toggle('is-scrolled', y > 8);
+    if (header && hero) {
+      const h = header.offsetHeight;
+      const overHero = hero.getBoundingClientRect().bottom > h;
+      const finalRect = finalSection ? finalSection.getBoundingClientRect() : null;
+      const overFinal = finalRect && finalRect.top < h && finalRect.bottom > h;
+      header.classList.toggle('is-light', !(overHero || overFinal));
+    }
     let active = -1;
     sectionTargets.forEach((section, index) => { if (section && section.getBoundingClientRect().top <= 160) active = index; });
     sectionLinks.forEach((link, index) => {
