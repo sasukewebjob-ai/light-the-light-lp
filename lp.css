@@ -275,6 +275,26 @@ details[open]>summary>span[aria-hidden]:last-child{transform:rotate(45deg)}
 .work-grid strong{color:var(--green)}
 @media (max-width:960px){.story-grid{grid-template-columns:1fr}.work-grid{grid-template-columns:1fr 1fr}.extra-story-grid{grid-template-columns:1fr}}
 @media (max-width:520px){.work-grid{grid-template-columns:1fr}}
+.team-work{margin-top:64px;padding-top:48px;border-top:1px solid var(--line)}
+.team-work h3{font-family:var(--serif);font-size:1.5rem;margin-bottom:12px}
+.team-work-lead{color:var(--ink-2);font-size:17px;word-break:auto-phrase;text-wrap:pretty}
+.team-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.team-flow li{padding:22px 24px;border-radius:14px;background:var(--white);border:1px solid var(--line)}
+.team-flow li>span{font-family:var(--latin);font-style:italic;font-size:32px;color:var(--gold-ink);line-height:1}
+.team-flow h4{font-size:18px;font-weight:700;line-height:1.5;margin:10px 0 6px}
+.team-flow p{color:var(--ink-2);font-size:15px;word-break:auto-phrase;text-wrap:pretty}
+.team-case{margin-top:20px;padding:28px;border-radius:var(--radius);background:var(--paper-2)}
+.team-case p:not(.story-label){margin-top:10px;font-size:16px;line-height:1.95;word-break:auto-phrase;text-wrap:pretty}
+.team-case strong{color:var(--green)}
+.team-case-link a{display:inline-block;margin-left:6px;color:var(--green);font-weight:700;text-decoration:underline;text-underline-offset:4px}
+@media (max-width:860px){.team-flow{grid-template-columns:1fr}}
+@media (max-width:520px){
+  .team-flow{gap:10px}
+  .team-flow li{display:grid;grid-template-columns:auto 1fr;column-gap:16px;align-items:baseline;padding:16px 20px}
+  .team-flow li>span{grid-row:span 2;font-size:28px}
+  .team-flow h4{margin:0}
+  .team-case{padding:22px 20px}
+}
 
 /* ---------- 07 運営者 ---------- */
 .founder{display:grid;grid-template-columns:300px minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start}
