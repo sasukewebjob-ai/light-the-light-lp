@@ -236,11 +236,16 @@
   }
 
   // Send through one existing analytics path, never both (GA4 + GTM).
+  // Clarity is separate: the event and tag let recordings be filtered by LINE clicks.
   document.querySelectorAll('a[data-cta]').forEach(link => {
     link.addEventListener('click', () => {
       const payload = { cta_location: link.dataset.cta };
       if (typeof window.gtag === 'function') window.gtag('event', 'line_click', payload);
       else if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: 'line_click', ...payload });
+      if (typeof window.clarity === 'function') {
+        window.clarity('set', 'cta_location', payload.cta_location);
+        window.clarity('event', 'line_click');
+      }
     });
   });
 })();

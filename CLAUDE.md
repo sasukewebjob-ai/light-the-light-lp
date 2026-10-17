@@ -23,6 +23,7 @@
 - `index.html`：意味構造・コンテンツ・メタ情報
 - `lp.css`：LP専用のデザイン、レスポンシブ、アニメーション（オープニング含む）
 - `lp.js`：オープニング、夜の灯りの粒（canvas）、勉強会ギャラリーの操作、グルコンのタブ、FAQ、ヘッダーの色の切り替え、モバイルCTA、計測用イベント
+- `tags.js`：GA4（`G-F4BSCGG9BJ`）とMicrosoft Clarity（`yz169zsn9h`）のタグ。4ページ全部の `<head>` で読み込む。公開ドメイン（sasukewebjob-ai.github.io）でだけ動き、ローカルでは `?tags=debug` を付けたときだけ動く（GA4はDebugViewのみ）
 - `img/`：Codexの画像生成で作った画像（`hero-night.webp`・`stuck.webp`・`windows.webp`）、勉強会の画面（`img/sessions/*.webp`）、小さいロゴ（`logo-mark-80.png`）。元のPNGは `originals/ai/`（git管理外）
 - `docs/sessions.json`：勉強会ギャラリーの正本（日付・テーマ・説明・画面5枚）。変えたら `node scripts/build-sessions.js` で index.html に反映（印の間を手で直さない）
 - `ogp-2026-10.jpg`：現行OGP画像（1200×630。最初の画面の画像に新コピーを重ねたもの）。旧 `ogp-group.png`・`ogp.png` は保存するがLPからは参照しない
@@ -37,7 +38,7 @@
 - `screenshots/` / `originals/`：git管理外
 
 旧 `index-pre-*.html` は過去のバックアップ。現行LPの数値や仕様の正本にしない。
-外部依存はGoogle Fontsのみ。ビルド・npmインストール不要の静的サイト。
+外部依存はGoogle Fontsと計測タグ（GA4・Clarity）のみ。ビルド・npmインストール不要の静的サイト。
 
 ## セクション構成（2026-10-11 作り直し）
 0. オープニング（初回だけ約2秒。ロゴに光がともる。押せば飛ばせる・`?opening=off` で出ない・動きを減らす設定では出ない）
@@ -75,7 +76,7 @@
 - FAQはbutton＋aria-expanded＋aria-controls。閉じた回答はinertでフォーカスからも除外
 - タブは矢印・Home・Endに対応。画面幅によってaria-orientationを切り替える
 - スマホ固定CTAはヒーロー通過後に表示し、最終CTA付近で隠す。ヘッダーは夜の画面の上では紺、それ以外では明るい色
-- 全LINEリンクにdata-ctaを付ける（計測の名前）。最初の画面のボタンには HP作成システムが主ボタンと見なす `data-cta-role="primary"` も付ける。gtagかdataLayerのどちらか一方へline_clickを送る。計測基盤の導入・受信確認は未実施
+- 全LINEリンクにdata-ctaを付ける（計測の名前）。最初の画面のボタンには HP作成システムが主ボタンと見なす `data-cta-role="primary"` も付ける。gtagかdataLayerのどちらか一方へline_clickを送り、Clarityにも同名のイベントとcta_locationのタグを送る。GA4・Clarityは2026-10-17に導入（`tags.js`。プライバシーポリシー5章に記載）。line_clickのキーイベント登録などGA4側の設定は `docs/lp-handoff.md`
 
 ## 検証
 ```powershell

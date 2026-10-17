@@ -52,6 +52,10 @@ for tag, attrs in page.elements:
     if tag == 'button' and 'faq-question' in attrs.get('class', ''):
         if not attrs.get('aria-controls') or attrs.get('aria-expanded') not in ('true', 'false'):
             errors.append('FAQ button missing accessible state')
+# GA4 and Clarity load from tags.js, so every public page must include it.
+for name in ('index.html', 'privacy.html', 'terms.html', 'tokushoho.html'):
+    if '<script src="tags.js" async></script>' not in (ROOT / name).read_text(encoding='utf-8'):
+        errors.append(f'Analytics tags missing: {name}')
 print(json.dumps({'errors': errors, 'ids': len(ids), 'line_ctas': cta_count,
                   'elements': len(page.elements)}, ensure_ascii=False, indent=2))
 raise SystemExit(bool(errors))
