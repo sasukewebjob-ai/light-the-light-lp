@@ -5,7 +5,8 @@
 - LINEボタンのクリックは、GA4に `line_click`（パラメータ `cta_location`＝ボタンの場所）、Clarityに同名のイベントと `cta_location` のタグとして送る
 - プライバシーポリシー5章にGA4・Clarityの名前、集める情報、各社のポリシーへのリンク、オプトアウトの方法を記載（最終更新日 2026年10月17日）。Cookieの同意バナーは置いていない
 - 確認済み：`python scripts/check-lp.py` エラー0（4ページすべてに `tags.js` があるかも検査するようにした）／ローカルでは通常タグが動かない／`?tags=debug` で gtag.js・Clarity が読み込まれ、GA4へ `page_view` と `line_click`（cta_location=hero）が送られる／コンソールエラーなし
-- **未確認：公開後のGA4リアルタイム・Clarityの記録への実際の反映**（公開してから確認する）
+- 公開済み（2026-10-17 ユーザーの指示で push。コミット 0099cc7）。公開サイトで確認：通常表示で gtag.js・Clarity が読み込まれ、GA4へ `page_view`（debugなし）、Clarityへ collect が送られる／`?tags=debug` で LINEクリック（cta_location=pricing-community）が `line_click` として送られる
+- **未確認：GA4・Clarityの管理画面での受信**（このブラウザーはGoogle未ログインのため見られなかった。ユーザーがGA4のリアルタイム・DebugViewとClarityのダッシュボードで確認する。Clarityは表示まで最大2時間ほどかかる）
 - **GA4の管理画面でユーザーがすること**（データが届いてから）：
   1. 管理 → イベント（またはキーイベント）で `line_click` を**キーイベント**に登録する（LINE相談につながった数を成果として数える）
   2. 管理 → カスタム定義 → カスタムディメンションを作成：名前「CTAの場所」、範囲「イベント」、イベントパラメータ `cta_location`（どのボタンから押されたかをレポートで見る）
