@@ -1,5 +1,6 @@
 // GA4 and Microsoft Clarity. Only the public site is measured, so local previews stay out of the data.
-// To test elsewhere, add ?tags=debug: GA4 hits go to DebugView only and Clarity sessions get env=debug.
+// To test elsewhere, add ?tags=debug: GA4 hits carry debug_mode (DebugView) and Clarity sessions get env=debug.
+// GA4 still counts debug hits in reports unless the property's Developer traffic data filter is active.
 (() => {
   const GA4_ID = 'G-F4BSCGG9BJ';
   const CLARITY_ID = 'yz169zsn9h';

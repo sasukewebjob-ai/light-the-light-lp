@@ -23,7 +23,7 @@
 - `index.html`：意味構造・コンテンツ・メタ情報
 - `lp.css`：LP専用のデザイン、レスポンシブ、アニメーション（オープニング含む）
 - `lp.js`：オープニング、夜の灯りの粒（canvas）、勉強会ギャラリーの操作、グルコンのタブ、FAQ、ヘッダーの色の切り替え、モバイルCTA、計測用イベント
-- `tags.js`：GA4（`G-F4BSCGG9BJ`）とMicrosoft Clarity（`yz169zsn9h`）のタグ。4ページ全部の `<head>` で読み込む。公開ドメイン（sasukewebjob-ai.github.io）でだけ動き、ローカルでは `?tags=debug` を付けたときだけ動く（GA4はDebugViewのみ）
+- `tags.js`：GA4（`G-F4BSCGG9BJ`）とMicrosoft Clarity（`yz169zsn9h`）のタグ。4ページ全部の `<head>` で読み込む。公開ドメイン（sasukewebjob-ai.github.io）でだけ動き、ローカルでは `?tags=debug` を付けたときだけ動く（GA4のイベントに debug_mode が付く。GA4の「デベロッパー トラフィック」データフィルタを有効にしない限り、通常のレポートにも入る）
 - `img/`：Codexの画像生成で作った画像（`hero-night.webp`・`stuck.webp`・`windows.webp`）、勉強会の画面（`img/sessions/*.webp`）、小さいロゴ（`logo-mark-80.png`）。元のPNGは `originals/ai/`（git管理外）
 - `docs/sessions.json`：勉強会ギャラリーの正本（日付・テーマ・説明・画面5枚）。変えたら `node scripts/build-sessions.js` で index.html に反映（印の間を手で直さない）
 - `ogp-2026-10.jpg`：現行OGP画像（1200×630。最初の画面の画像に新コピーを重ねたもの）。旧 `ogp-group.png`・`ogp.png` は保存するがLPからは参照しない
