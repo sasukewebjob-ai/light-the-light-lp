@@ -220,7 +220,8 @@ details[open]>summary>span[aria-hidden]:last-child{transform:rotate(45deg)}
 .session-note p:not(.session-note-label){font-size:15px;line-height:1.85;color:var(--ivory-2)}
 .session-note .text-link{align-self:flex-start}
 @media (max-width:960px){.session-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:600px){.session-grid{grid-template-columns:1fr;gap:18px}.session-body{padding:18px 20px 20px}.session-note{padding:26px 22px}}
+/* スマホは横長のカード：日付とテーマは全幅で上に、その下に小さな画面と1行を並べ、最後にnoteへのリンク */
+@media (max-width:600px){.session-grid{grid-template-columns:1fr;gap:14px}.session{display:grid;grid-template-columns:104px minmax(0,1fr);grid-template-areas:"date date" "title title" "shot lead" "link link";column-gap:14px;row-gap:6px;padding:16px}.session-body{display:contents}.session-shot{grid-area:shot;align-self:start;margin-top:6px;border:1px solid var(--line);border-radius:8px}.session-body time{grid-area:date;font-size:14px;line-height:1.5}.session-body h3{grid-area:title;font-size:1.05rem;line-height:1.55}.session-lead{grid-area:lead;margin-top:6px;font-size:14px;line-height:1.75}.session-link{grid-area:link;justify-self:start;margin-top:0}.session-note{padding:24px 20px;gap:10px}.session-note h3{font-size:1.15rem}}
 
 /* ---------- 途中の行動の促し ---------- */
 .inline-cta{margin-top:clamp(48px,6vw,72px);display:flex;align-items:center;justify-content:space-between;gap:24px 40px;flex-wrap:wrap;padding:clamp(28px,4vw,40px) clamp(24px,4vw,48px);border-radius:var(--radius);background:var(--white);border:1px solid var(--line)}
