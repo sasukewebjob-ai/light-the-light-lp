@@ -108,47 +108,6 @@
     selectStep(0);
   }
 
-  // Study-session gallery: swipe/scroll natively; buttons and theme chips move the same track.
-  const track = document.getElementById('sessionTrack');
-  if (track) {
-    const items = [...track.querySelectorAll('.session-head, .shot')];
-    const chips = [...document.querySelectorAll('[data-session-link]')];
-    const prev = document.getElementById('sessionPrev');
-    const next = document.getElementById('sessionNext');
-    const edge = () => parseFloat(getComputedStyle(track).scrollPaddingLeft) || 0;
-    const behavior = () => (reduceMotion.matches ? 'auto' : 'smooth');
-    const goTo = el => track.scrollTo({ left: el.offsetLeft - edge(), behavior: behavior() });
-    const current = () => {
-      const x = track.scrollLeft + 4;
-      let index = 0;
-      items.forEach((el, i) => { if (el.offsetLeft - edge() <= x) index = i; });
-      return index;
-    };
-    prev?.addEventListener('click', () => goTo(items[Math.max(0, current() - 1)]));
-    next?.addEventListener('click', () => goTo(items[Math.min(items.length - 1, current() + 1)]));
-    chips.forEach(chip => chip.addEventListener('click', event => {
-      const head = document.getElementById('session-' + chip.dataset.sessionLink)?.querySelector('.session-head');
-      if (!head) return;
-      event.preventDefault();
-      goTo(head);
-    }));
-    let queuedTrack = false;
-    const syncTrack = () => {
-      queuedTrack = false;
-      const max = track.scrollWidth - track.clientWidth - 2;
-      if (prev) prev.disabled = track.scrollLeft <= 2;
-      if (next) next.disabled = track.scrollLeft >= max;
-      const group = items[current()]?.closest('.session');
-      chips.forEach(chip => {
-        if (group && chip.dataset.sessionLink === group.dataset.session) chip.setAttribute('aria-current', 'true');
-        else chip.removeAttribute('aria-current');
-      });
-    };
-    track.addEventListener('scroll', () => { if (!queuedTrack) { queuedTrack = true; window.requestAnimationFrame(syncTrack); } }, { passive: true });
-    window.addEventListener('resize', syncTrack, { passive: true });
-    syncTrack();
-  }
-
   // Answers stay readable without JS; closed panels are also removed from tab order.
   document.querySelectorAll('.faq-question').forEach(button => {
     const panel = document.getElementById(button.getAttribute('aria-controls'));

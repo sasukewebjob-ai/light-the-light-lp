@@ -22,16 +22,16 @@
 ## ファイル構成
 - `index.html`：意味構造・コンテンツ・メタ情報
 - `lp.css`：LP専用のデザイン、レスポンシブ、アニメーション（オープニング含む）
-- `lp.js`：オープニング、夜の灯りの粒（canvas）、勉強会ギャラリーの操作、グルコンのタブ、FAQ、ヘッダーの色の切り替え、モバイルCTA、計測用イベント
+- `lp.js`：オープニング、夜の灯りの粒（canvas）、グルコンのタブ、FAQ、ヘッダーの色の切り替え、モバイルCTA、計測用イベント
 - `tags.js`：GA4（`G-F4BSCGG9BJ`）とMicrosoft Clarity（`yz169zsn9h`）のタグ。4ページ全部の `<head>` で読み込む。公開ドメイン（sasukewebjob-ai.github.io）でだけ動き、ローカルでは `?tags=debug` を付けたときだけ動く（GA4のイベントに debug_mode が付く。GA4の「Developer Traffic」データフィルタを有効にしてあるので通常のレポートには入らない）
-- `img/`：Codexの画像生成で作った画像（`hero-night.webp`・`stuck.webp`・`windows.webp`）、勉強会の画面（`img/sessions/*.webp`）、小さいロゴ（`logo-mark-80.png`）。元のPNGは `originals/ai/`（git管理外）
-- `docs/sessions.json`：勉強会ギャラリーの正本（日付・テーマ・説明・画面5枚）。変えたら `node scripts/build-sessions.js` で index.html に反映（印の間を手で直さない）
+- `img/`：Codexの画像生成で作った画像（`hero-night.webp`・`stuck.webp`・`windows.webp`）、勉強会の画面（`img/sessions/*.webp`・各回1枚の計5枚）、小さいロゴ（`logo-mark-80.png`）。元のPNGは `originals/ai/`（git管理外）
+- `docs/sessions.json`：勉強会の中身の正本（日付・テーマ・画面1枚・noteのレポートのURL）。変えたら `node scripts/build-sessions.js` で index.html に反映（印の間を手で直さない）
 - `ogp-2026-10.jpg`：現行OGP画像（1200×630。最初の画面の画像に新コピーを重ねたもの）。旧 `ogp-group.png`・`ogp.png` は保存するがLPからは参照しない
 - `logo.png` / `logo-mark.png` / favicon各種：既存ロゴ
 - `profile.jpg`：運営者の写真。`seminar1.jpg`〜`seminar4.jpg` は旧LPの活動写真（新LPでは不使用。勉強会ギャラリーに置き換え）
 - `tokushoho.html` / `privacy.html` / `terms.html` / `legal.css`：法的ページと共通CSS
 - `scripts/check-lp.py`：HTML構造・ローカル参照・アクセシビリティ参照の静的検証
-- `scripts/build-sessions.js`：勉強会ギャラリーのHTMLを作る
+- `scripts/build-sessions.js`：勉強会の中身のカードのHTMLを作る
 - `scripts/score-with-hp-studio.js`：ハイクオリティHP作成システムと同じ採点にかける（合格＝Quality 75以上・AIっぽさ25以下・致命的0）
 - `docs/redesign-2026-10.md`：2026-10-11の作り直しの設計（デザイン・ページ構成・導線・画像を作った理由・採点の結果）
 - `docs/archive-viewing-order-review.md`：既存アーカイブの調査メモ
@@ -44,12 +44,12 @@
 0. オープニング（初回だけ約2秒。ロゴに光がともる。押せば飛ばせる・`?opening=off` で出ない・動きを減らす設定では出ない）
 1. 最初の画面（夜）：「AIは、使い始めた。／でも、仕事でどう使う？」、月2回・月5,500円から・定員20名、LINE相談（主）＋勉強会の中身を見る（副）
 2. 01 使い始めた人の3つの壁（使い方が自己流／学び方がわからない／聞ける相手がいない）→ 1回のグルコンでやること3つ
-3. 02 勉強会の中身：テーマごとに日付・説明・当日の画面5枚を横スワイプ（`docs/sessions.json`）→ 相談
+3. 02 勉強会の中身：1回につきカード1枚（日付・テーマ・当日の画面1枚。PC3列・スマホ1列）。レポートがある回はnoteの記事へ、最後のマスでnoteのレポート一覧へ案内（`docs/sessions.json`。2026-10-19 簡素化）→ 相談
 4. 03 参加の目安：向いている方／向いていない方
 5. 04 グルコンの進め方：開催（夜の住宅街の帯）→ 学び合う・共有する・仕事に活かすタブ（旧「3つの柱」を統合）。市場背景は折りたたみ
 6. 05 勉強会の合間：アーカイブ＋視聴案内／Slack
 7. 06 メンバーの声と仕事の実例 → チームで受けた仕事（見つける・分担する・共有するの3つと事例1件。名前・金額・社名は出さない。2026-10-16追加）→ 相談
-8. 07 運営者・掲載・登壇
+8. 07 運営者（X・Threads・noteへのリンク付き）・掲載・登壇
 9. 08 料金：コミュニティ月5,500円が基本。面談付きは「コミュニティ＋月4回の個別面談（スタンダード）」と中身から見せる。その他3プランは折りたたみ
 10. 09 参加の流れ
 11. 10 FAQ：13問（1問目は「どのくらいAIを使えていれば参加できますか？」）
@@ -69,10 +69,10 @@
 ## デザインと実装（2026-10-11 作り直し。詳細は docs/redesign-2026-10.md）
 - はじまり（オープニング・最初の画面）と終わり（最後の呼びかけ）は夜：紺 #0B1426・金の灯り #F2C14E（ロゴの羅針盤と星に合わせた）。本文は温かい白 #FBF8F2・墨 #1C2230・LINEの行動色の深い緑 #0A6B50・明るい背景の上の金の文字 #8A6420
 - 見出しは Shippori Mincho B1、本文は Noto Sans JP、欧文は Cormorant Garamond。見出しは `word-break:auto-phrase` と `palt` で文節改行・約物を詰める
-- AIの画像は「イメージ」と明記し、会員の写真のように見せない。実際の様子は勉強会ギャラリーの本物の画面で見せる
+- AIの画像は「イメージ」と明記し、会員の写真のように見せない。実際の様子は「勉強会の中身」の本物の画面で見せる
 - 勉強会の画面は録画から切り出し、参加者の映像・名前・チャット、タスクバー、URL、顧客名などは切り落とすかぼかす。キャラクターや他社の画面が写るコマは使わない
-- スクロール時の控えめな出現、タブ切り替え、FAQ開閉、横スワイプ。自動カルーセルや点滅は入れない
-- `prefers-reduced-motion` 対応。JavaScriptが使えない場合も主要本文・FAQ・リンク・ギャラリー（横スクロール）は読める構造
+- スクロール時の控えめな出現、タブ切り替え、FAQ開閉。自動カルーセルや点滅は入れない
+- `prefers-reduced-motion` 対応。JavaScriptが使えない場合も主要本文・FAQ・リンク・勉強会の中身は読める構造
 - FAQはbutton＋aria-expanded＋aria-controls。閉じた回答はinertでフォーカスからも除外
 - タブは矢印・Home・Endに対応。画面幅によってaria-orientationを切り替える
 - スマホ固定CTAはヒーロー通過後に表示し、最終CTA付近で隠す。ヘッダーは夜の画面の上では紺、それ以外では明るい色
