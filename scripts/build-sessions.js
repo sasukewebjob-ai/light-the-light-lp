@@ -19,7 +19,7 @@ function webpSize(file) {
   throw new Error('WebP の大きさを読めません：' + file);
 }
 
-// 1回＝カード1枚（日付・テーマ・当日の画面1枚）。noteにレポートがある回は記事へのリンクを付ける
+// 1回＝カード1枚（日付・テーマ・仕事の何に使う回かの1行・当日の画面1枚）。noteにレポートがある回は記事へのリンクを付ける
 const cards = sessions.map((s) => {
   const src = `img/sessions/${s.shot.file}.webp`;
   const { w, h } = webpSize(path.join(ROOT, src));
@@ -29,7 +29,8 @@ const cards = sessions.map((s) => {
   return `      <article class="session" id="session-${s.id}" aria-labelledby="session-${s.id}-title">
         <div class="session-body">
           <time datetime="${s.date}">${s.date.replace(/-/g, '.')}</time>
-          <h3 id="session-${s.id}-title">${esc(s.title)}</h3>${note}
+          <h3 id="session-${s.id}-title">${esc(s.title)}</h3>
+          <p class="session-lead">${esc(s.lead)}</p>${note}
         </div>
         <div class="session-shot"><img src="${src}" width="${w}" height="${h}" alt="当日の画面：${esc(s.shot.caption)}" loading="lazy" decoding="async"></div>
       </article>`;

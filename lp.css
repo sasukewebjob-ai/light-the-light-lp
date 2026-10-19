@@ -55,7 +55,7 @@ small{font-size:14px}
 .section-heading h2,.walls-head h2,.between h2{font-family:var(--serif);font-size:clamp(1.85rem,1.15rem + 2.4vw,2.95rem);line-height:1.45;letter-spacing:.04em;color:var(--ink)}
 .section-heading>p:not(.kicker){margin-top:22px;color:var(--ink-2);font-size:17px;word-break:auto-phrase;text-wrap:pretty}
 .nowrap{white-space:nowrap}
-.work-grid p,.session-note p,.fit-card li,.walls-list p,.quote-card blockquote{word-break:auto-phrase;text-wrap:pretty}
+.work-grid p,.session-lead,.session-note p,.fit-card li,.walls-list p,.quote-card blockquote{word-break:auto-phrase;text-wrap:pretty}
 .split-heading{max-width:none;display:grid;grid-template-columns:1fr minmax(0,420px);gap:32px;align-items:end}
 .split-heading>p{margin:0!important}
 @media (max-width:760px){.split-heading{grid-template-columns:1fr;gap:18px}}
@@ -211,6 +211,7 @@ details[open]>summary>span[aria-hidden]:last-child{transform:rotate(45deg)}
 .session-body{flex:1;display:flex;flex-direction:column;gap:6px;padding:20px 22px 22px}
 .session-body time{font-family:var(--serif);font-weight:700;font-size:15px;letter-spacing:.06em;color:var(--gold-ink)}
 .session-body h3{font-family:var(--serif);font-size:1.15rem;line-height:1.6}
+.session-lead{font-size:15px;line-height:1.8;color:var(--ink-2)}
 .session-link{align-self:flex-start;margin-top:auto;font-size:15px}
 .session-note{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:30px 28px;border-radius:var(--radius);background:var(--night);color:var(--ivory)}
 .session-note::after{content:"";position:absolute;right:-30px;top:-30px;width:140px;height:140px;background:radial-gradient(circle,rgba(242,193,78,.35),transparent 70%);pointer-events:none}
