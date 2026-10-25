@@ -3,7 +3,7 @@
   --night:#0B1426;--night-2:#13213D;--night-3:#1B2C4F;--lamp:#F2C14E;--lamp-soft:#E9D9B0;--ivory:#F6F1E6;--ivory-2:#C9CED9;--mist:#9AA3B5;
   --paper:#FBF8F2;--paper-2:#F3EEE4;--white:#fff;--ink:#1C2230;--ink-2:#4A5162;--line:#E2DCCF;
   --green:#0A6B50;--green-dark:#085640;--gold-ink:#8A6420;--alert:#B8352A;--compass:#2150B8;
-  --sans:'Noto Sans JP',system-ui,sans-serif;--serif:'Shippori Mincho B1','Noto Serif JP',serif;--latin:'Cormorant Garamond','Shippori Mincho B1',serif;
+  --sans:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic UI','Yu Gothic Medium',YuGothic,Meiryo,system-ui,sans-serif;--serif:'Shippori Mincho B1','Noto Serif JP',serif;--latin:'Cormorant Garamond','Shippori Mincho B1',serif;
   --radius:18px;--shadow:0 30px 60px -32px rgba(11,20,38,.35);--container:1180px;--gutter:20px
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -434,3 +434,23 @@ html.is-opening{overflow:hidden}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .opening{display:none!important}
 }
+
+/* 2026-10-25：HP作成システムの診断の直し（360px・320px のはみ出し・成果の数字の注記・料金のボタンの下の「決済なし」・税込） */
+.card-note{display:block;margin-top:12px;font-size:12.5px;line-height:1.7;color:var(--ink-2)}
+.quote-featured .card-note{color:var(--ivory-2)}
+.work-grid .card-note{margin-top:10px}
+.plan-micro{margin-top:10px;font-size:13px;text-align:center;color:var(--ink-2)}
+.other-price small{font-size:13px;font-weight:400;margin-left:4px}
+.other-plan-note{margin:16px 0 4px;font-size:14px;color:var(--ink-2)}
+.story-grid>*,.work-grid>*{min-width:0}
+@media (max-width:960px){.story-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:420px){.quote-card{padding:24px 20px}.quote-card blockquote{overflow-wrap:anywhere}}
+@media (max-width:380px){.header-inner{padding:0 14px;gap:8px}.brand-word{font-size:17px}.brand img{width:34px;height:auto}.button-small{padding:0 12px;font-size:13px;gap:6px}}
+/* 2026-10-25：長い所を開け閉めに（ユーザー指示「今の長さでもいいけど開閉できるように」）。メンバーの声の「仕事の変化・チームの仕事」と、料金のプランの残りの中身 */
+.more-work summary small{display:block;font-weight:400;font-size:14px;color:var(--ink-2);margin-top:2px}
+.more-work[open]{padding-bottom:20px}
+.more-work .work-stories{margin-top:8px}
+.plan-more{margin-top:8px;border-top:1px dashed var(--line)}
+.plan-more summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:6px 2px;font-size:14px;font-weight:700;color:var(--ink-2);cursor:pointer;list-style:none}
+.plan-more summary::-webkit-details-marker{display:none}
+.plan-features-more{margin:4px 0 6px}
