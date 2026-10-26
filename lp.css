@@ -55,7 +55,7 @@ small{font-size:14px}
 .section-heading h2,.walls-head h2,.between h2{font-family:var(--serif);font-size:clamp(1.85rem,1.15rem + 2.4vw,2.95rem);line-height:1.45;letter-spacing:.04em;color:var(--ink)}
 .section-heading>p:not(.kicker){margin-top:22px;color:var(--ink-2);font-size:17px;word-break:auto-phrase;text-wrap:pretty}
 .nowrap{white-space:nowrap}
-.work-grid p,.session-lead,.session-note p,.fit-card li,.walls-list p,.quote-card blockquote{word-break:auto-phrase;text-wrap:pretty}
+.work-grid p,.session-lead,.session-note p,.fit-card li,.walls-list p,.quote-card blockquote,.check-list small,.final-cta h2+p,.founder-copy>p{word-break:auto-phrase;text-wrap:pretty}
 .split-heading{max-width:none;display:grid;grid-template-columns:1fr minmax(0,420px);gap:32px;align-items:end}
 .split-heading>p{margin:0!important}
 @media (max-width:760px){.split-heading{grid-template-columns:1fr;gap:18px}}
@@ -122,6 +122,9 @@ small{font-size:14px}
 }
 
 /* ---------- 01 3つの壁 ---------- */
+.flow-caption{max-width:980px;margin:clamp(36px,5vw,56px) auto 0;text-align:center;font-size:14px;font-weight:700;letter-spacing:.12em;color:var(--gold-ink)}
+.flow-caption+.session-flow{margin-top:14px}
+@media (max-width:860px){.flow-caption{text-align:left}}
 .session-flow{margin:clamp(36px,5vw,56px) auto 0;max-width:980px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .session-flow li{padding:24px 22px;display:flex;flex-direction:column;gap:4px}
 .session-flow li+li{border-left:1px solid var(--line)}
@@ -382,6 +385,7 @@ details[open]>summary>span[aria-hidden]:last-child{transform:rotate(45deg)}
 .final-action .cta-nudge{color:var(--lamp-soft)}
 .final-action .button{min-height:62px;font-size:17px}
 @media (max-width:860px){.final-inner{grid-template-columns:1fr}.final-action,.final-action .button{width:100%}}
+@media (max-width:374px){.final-cta h2{font-size:1.85rem}}
 
 footer{background:#070D1A;color:var(--ivory-2);padding:40px 0 110px}
 .footer-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
