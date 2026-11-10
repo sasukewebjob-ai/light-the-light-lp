@@ -1,0 +1,26 @@
+# 作業用・検証用ファイル
+screenshots/
+originals/
+
+# 作業メモ・開発用（公開リポジトリに含めない。2026-11-10 セキュリティ点検で除外）
+CLAUDE.md
+作業ログ.md
+docs/
+scripts/
+design-refs/
+awesome-design-md-README.md
+
+# 旧版のページ・使っていない画像
+index-old.html
+index-pre-*.html
+logo.png
+ogp.png
+ogp-group.png
+ogp-2026-10.jpg
+seminar*.jpg
+seminar*.png
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
